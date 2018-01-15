@@ -14,7 +14,7 @@ export default class HomeScreen extends Component {
             >
                 <Text>Home Screen</Text>
                 <Button
-                    onPress={() => navigate("Details")}
+                    onPress={() => navigate("GroupPage")}
                     title="Go to details"
                 />
             </View>

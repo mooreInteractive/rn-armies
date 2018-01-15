@@ -2,19 +2,14 @@ import React from "react";
 import { View, Text, Button } from "react-native";
 import { StackNavigator } from "react-navigation";
 import HomeScreen from "./home.js";
-
-const DetailsScreen = ({ navigation }) => (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Details Screen</Text>
-    </View>
-);
+import GroupTabs from "./groupPages/groupPageTabs.js";
 
 const RootNavigator = StackNavigator({
     Home: {
         screen: HomeScreen
     },
-    Details: {
-        screen: DetailsScreen
+    GroupPage: {
+        screen: GroupTabs
     }
 });
 
