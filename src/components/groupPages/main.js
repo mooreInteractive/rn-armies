@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { StyleSheet, ScrollView, View, Text, Button } from "react-native";
 import Card from "../cards/card.js";
 
-export default class GroupMain extends Component {
+class GroupMain extends Component {
     static navigationOptions = {
         tabBarLabel: () => <Text style={styles.tabLabel}>Main</Text>
     };
@@ -52,3 +53,9 @@ const styles = StyleSheet.create({
         position: "relative"
     }
 });
+
+const mapStateToProps = state => ({
+    groups: state.groups
+});
+
+export default connect(mapStateToProps)(GroupMain);

@@ -16,28 +16,21 @@ class Home extends Component {
             >
                 <Text>Home Screen</Text>
                 <Button
-                    onPress={() => navigate("BuySell")}
-                    title="Go to buy/sell"
+                    onPress={() => navigate("GroupPage")}
+                    title="Go to Groups"
                 />
                 <Button
                     onPress={() => navigate("Exchange")}
                     title="Go to exchange"
                 />
-                <Button
-                    onPress={() => navigate("FTUE")}
-                    title="Go to FTUE"
-                />
-                <Button
-                    onPress={() => navigate("Rewards")}
-                    title="Go to rewards"
-                />
+                <Button onPress={() => navigate("FTUE")} title="Go to FTUE" />
                 <Button
                     onPress={() => navigate("Wallet")}
                     title="Go to wallet"
                 />
             </View>
-        )
-    };
+        );
+    }
 }
 
 const mapStateToProps = state => ({

@@ -1,22 +1,23 @@
 import React from "react";
 import { StackNavigator } from "react-navigation";
 
-import BuySell from "../components/BuySell";
 import Exchange from "../components/Exchange";
 import FTUE from "../components/FTUE";
 import Home from "../components/Home";
-import Rewards from "../components/Rewards";
 import Wallet from "../components/Wallet";
+import GroupTabs from "../components/groupPages/groupPageTabs";
 
-const AppNavigator = StackNavigator({
-    BuySell: { screen: BuySell },
-    Exchange: { screen: Exchange },
-    FTUE: { screen: FTUE },
-    Home: { screen: Home },
-    Rewards: { screen: Rewards },
-    Wallet: { screen: Wallet }
-}, {
-    initialRouteName: "Home"
-});
+const AppNavigator = StackNavigator(
+    {
+        Exchange: { screen: Exchange },
+        FTUE: { screen: FTUE },
+        Home: { screen: Home },
+        Wallet: { screen: Wallet },
+        GroupPage: { screen: GroupTabs }
+    },
+    {
+        initialRouteName: "Home"
+    }
+);
 
 export default AppNavigator;
