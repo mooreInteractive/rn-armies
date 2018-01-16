@@ -7,14 +7,14 @@ export const coins = [
     },
     {
         key: "kaycats",
-        plural: "Katy Cats",
-        singular: "Katy Cat",
+        plural: "KatyCats",
+        singular: "KatyCat",
         symbol: "KC",
     },
     {
-        key: "beehive",
-        plural: "Beehive",
-        singular: "Beehive",
+        key: "beyhive",
+        plural: "Beyhive",
+        singular: "Beyhive",
         symbol: "BH",
     },
     {
@@ -26,7 +26,7 @@ export const coins = [
     {
         key: "swifties",
         plural: "Swifties",
-        singular: "Swifty",
+        singular: "Swiftie",
         symbol: "S",
     },
     {
