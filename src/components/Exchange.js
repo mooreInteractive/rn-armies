@@ -15,10 +15,6 @@ class Exchange extends Component {
                 }}
             >
                 <Text>Exchange Screen</Text>
-                <Button
-                    onPress={() => navigate("Home")}
-                    title="Go home"
-                />
             </View>
         )
     };
