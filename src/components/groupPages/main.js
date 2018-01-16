@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-    groups: state.groups
+    coins: state.coins
 });
 
 export default connect(mapStateToProps)(GroupMain);

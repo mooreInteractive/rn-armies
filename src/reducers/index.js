@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import groups from "./groups";
+import coins from "./coins";
 
 const appReducer = combineReducers({
-    groups
+    coins
 });
 
 export default appReducer;
