@@ -5,9 +5,21 @@ import Card from "../cards/card";
 import Miner from "../miner/miner";
 
 class GroupMain extends Component {
-    static navigationOptions = {
-        tabBarLabel: () => <Text style={styles.tabLabel}>Main</Text>
-    };
+    constructor(props) {
+        super(props);
+        this.currentGroup = props.navigation.state.params.group;
+        console.log("main", props, props.groups);
+    }
+    static navigationOptions = ({ navigation, screenProps }) => ({
+        tabBarLabel: props => {
+            console.log("nav options:", screenProps);
+            return (
+                <Text style={styles.tabLabel}>
+                    {navigation.state.params.group}
+                </Text>
+            );
+        }
+    });
 
     render() {
         return (
