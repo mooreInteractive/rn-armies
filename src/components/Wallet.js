@@ -25,7 +25,7 @@ class Wallet extends Component {
 }
 
 const mapStateToProps = state => ({
-    groups: state.groups
+    coins: state.coins
 });
 
 export default connect(mapStateToProps)(Wallet);
