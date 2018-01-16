@@ -14,7 +14,8 @@ export default class Card extends Component {
 const styles = StyleSheet.create({
     miner: {
         minHeight: 100,
-        backgroundColor: "#8989cd"
+        backgroundColor: "#aaaacd",
+        borderRadius: 0
     },
     card: {
         flex: 1,

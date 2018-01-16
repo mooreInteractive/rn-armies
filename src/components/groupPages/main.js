@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { StyleSheet, ScrollView, View, Text, Button } from "react-native";
-import Card from "../cards/card.js";
+import Card from "../cards/card";
+import Miner from "../miner/miner";
 
 class GroupMain extends Component {
     static navigationOptions = {
@@ -16,6 +17,7 @@ class GroupMain extends Component {
             >
                 <Card type={"miner"}>
                     <Text style={styles.minerTitle}>Miner</Text>
+                    <Miner />
                 </Card>
                 <Card>
                     <Text style={styles.text}>Card #1</Text>
@@ -50,7 +52,8 @@ const styles = StyleSheet.create({
         color: "#dedede",
         flex: 1,
         top: -10,
-        position: "relative"
+        position: "relative",
+        fontWeight: "bold"
     }
 });
 
