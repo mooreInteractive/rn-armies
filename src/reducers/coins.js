@@ -7,6 +7,7 @@ const getInitialState = () => ({
         symbol: "B",
         price: getRandomPrice(),
         supply: getRandomSupply(), 
+        rewards: {},
     },
     katycats: {
         plural: "Katy Cats",
@@ -14,6 +15,7 @@ const getInitialState = () => ({
         symbol: "KC",
         price: getRandomPrice(),
         supply: getRandomSupply(), 
+        rewards: {},
     },
     beehive: {
         plural: "Beehive",
@@ -21,6 +23,7 @@ const getInitialState = () => ({
         symbol: "BH",
         price: getRandomPrice(),
         supply: getRandomSupply(), 
+        rewards: {},
     },
     harmonizers: {
         plural: "Harmonizers",
@@ -28,6 +31,7 @@ const getInitialState = () => ({
         symbol: "H",
         price: getRandomPrice(),
         supply: getRandomSupply(), 
+        rewards: {},
     },
     swifties: {
         plural: "Swifties",
@@ -35,6 +39,7 @@ const getInitialState = () => ({
         symbol: "SC",
         price: getRandomPrice(),
         supply: getRandomSupply(), 
+        rewards: {},
     },
     guccigang: {
         plural: "Gucci Gang",
@@ -42,6 +47,7 @@ const getInitialState = () => ({
         symbol: "GG",
         price: getRandomPrice(),
         supply: getRandomSupply(), 
+        rewards: {},
     },
 });
 
