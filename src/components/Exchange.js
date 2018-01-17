@@ -81,21 +81,33 @@ class Exchange extends Component {
               this.setState({ modalVisible: false })
             }}
           >
-            <View
-              style={{ height: 400, backgroundColor: "gray"}}
-              >
-              <Picker
-                selectedValue={this.state[this.state.modalFocusTarget]}
-                onValueChange={(itemValue, itemIndex) => {
-                  const state = {}
-                  state[this.state.modalFocusTarget] = itemValue
-                  this.setState(state)
-                }}
-              >
-                <Picker.Item label="aCoin" value="aCoin" />
-                <Picker.Item label="bCoin" value="bCoin" />
-                <Picker.Item label="cCoin" value="cCoin" />
-              </Picker>
+            <View style={{ flex: 1 }}>
+              <View style={{ flex: 0.3, flexDirection: 'column', marginTop: "auto", backgroundColor: "white", }} >
+                <View style={{ flex: 1, flexDirection: 'row', justifyContent: "flex-end" }}>
+                  <Button title="Done" onPress={() => this.setState({ modalVisible: false })}/>
+                </View>
+                <Picker
+                  selectedValue={this.state[this.state.modalFocusTarget]}
+                  onValueChange={(itemValue, itemIndex) => {
+                    const state = {}
+                    state[this.state.modalFocusTarget] = itemValue
+                    this.setState(state)
+                  }}
+                >
+                  <Picker.Item label="aCoin" value="aCoin" />
+                  <Picker.Item label="bCoin" value="bCoin" />
+                  <Picker.Item label="cCoin" value="cCoin" />
+                  <Picker.Item label="dCoin" value="dCoin" />
+                  <Picker.Item label="eCoin" value="eCoin" />
+                  <Picker.Item label="fCoin" value="fCoin" />
+                  <Picker.Item label="gCoin" value="gCoin" />
+                  <Picker.Item label="hCoin" value="hCoin" />
+                  <Picker.Item label="iCoin" value="iCoin" />
+                  <Picker.Item label="jCoin" value="jCoin" />
+                  <Picker.Item label="kCoin" value="kCoin" />
+                  <Picker.Item label="lCoin" value="lCoin" />
+                </Picker>
+              </View>
             </View>
           </TouchableWithoutFeedback>
         </Modal>
@@ -115,6 +127,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 20,
         textAlign: "center",
+        marginTop: 20,
         marginBottom: 20
     },
     subHeader: {
@@ -135,9 +148,6 @@ const styles = StyleSheet.create({
         marginTop: 5,
         marginBottom: 5,
         paddingLeft: 5
-    },
-    text: {
-        color: "#ffffff"
     },
 });
 
