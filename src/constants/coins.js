@@ -41,6 +41,13 @@ export const coins = [
         artist: "Lil Pump",
         symbol: "GG",
     },
+    {
+        key: "wutang",
+        plural: "Wu-Tang",
+        singular: "Wu-Tang",
+        artist: "Wu-Tang Clan",
+        symbol: "WT",
+    },
 ]
 
 export const randomPrice = {
