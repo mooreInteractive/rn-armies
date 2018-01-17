@@ -1,4 +1,4 @@
-import { getRandomWallet } from "../helpers/user";
+import { getRandomWallet } from "../helpers/randoms";
 
 const getInitialState = () => ({
     name: "Bob Belcher",

@@ -1,5 +1,5 @@
 import { coins } from "../constants/coins";
-import { getRandomPrice, getRandomSupply } from "../helpers/coins";
+import { getRandomPrice, getRandomSupply } from "../helpers/randoms";
 
 const getInitialState = () => {
     return coins.reduce((state, coin) => {
@@ -21,7 +21,5 @@ const coinsState = (state = getInitialState(), action) => {
       return state
   }
 }
-
-console.log(JSON.stringify(coinsState(undefined, {type: 'lol'}), null, 2));
 
 export default coinsState;
