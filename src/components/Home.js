@@ -5,7 +5,6 @@ import { View, Text, Button } from "react-native";
 class Home extends Component {
     render() {
         const { navigate } = this.props.navigation;
-        let beliebers = this.props.coins.beliebers.plural;
         return (
             <View
                 style={{
@@ -18,8 +17,8 @@ class Home extends Component {
                 <Button
                     onPress={() =>
                         navigate("GroupPage", {
-                            coinName: beliebers,
-                            coinKey: "beliebers"
+                            coin: "beliebers",
+                            label: "Beliebers"
                         })
                     }
                     title="Go to Beliebers Group"

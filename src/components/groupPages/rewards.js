@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { StyleSheet, View, Image, Text, Button } from "react-native";
+import { StyleSheet, View, Image, Text, Button, AlertIOS } from "react-native";
 import { tabStyles } from "./groupTabsStyles.js";
 import Card from "../cards/card";
 
 class GroupRewards extends Component {
     constructor(props) {
         super(props);
-        this.coinName = props.navigation.state.params.coinName;
-        this.coinKey = props.navigation.state.params.coinKey;
+        this.coinName = props.navigation.state.params.label;
+        this.coinKey = props.navigation.state.params.coin;
         this.coinObj = this.props.coins[this.coinKey];
+        this.coinWallet = this.props.user.wallet.coins.filter(
+            coin => coin.coin === this.coinKey
+        );
         this.state = {
             rewards: [
                 {
@@ -43,6 +46,44 @@ class GroupRewards extends Component {
 
     getReward(reward) {
         console.log("getReward", reward);
+        let userCoins = this.coinWallet.length ? this.coinWallet[0].amount : 0;
+        let cost = reward.cost;
+        let requirementsMet = userCoins >= cost;
+        if (requirementsMet) {
+            //good to go
+            let title = "Are you Sure?";
+            let message = `Are you sure you want to redeem ${
+                reward.type
+            } reward for ${cost} ${this.coinObj.symbol}?`;
+            let buttons = [
+                {
+                    text: "Oh Crap, No!",
+                    onPress: () => {
+                        console.log("cancelled, whew.");
+                    },
+                    style: "cancel"
+                },
+                {
+                    text: "Yep",
+                    onPress: () => {
+                        //Add buyAmt to user Coin Wallet
+                        //Remove cost from user USD Wallet
+                        console.log("add reward", reward);
+                        console.log("remove coin", cost);
+                    }
+                }
+            ];
+            AlertIOS.alert(title, message, buttons);
+        } else {
+            //not enough cash bro
+            //good to go
+            let title = "You Can't Afford It";
+            let message = `You only have ${userCoins}, but you need ${cost} to redeem this reward.`;
+            let callback = () => {
+                console.log("no reward.");
+            };
+            AlertIOS.alert(title, message, callback);
+        }
     }
 
     renderRewards() {
@@ -83,6 +124,7 @@ class GroupRewards extends Component {
     }
 
     render() {
+        let bal = this.coinWallet.length ? this.coinWallet[0].amount : 0;
         return (
             <View style={tabStyles.page}>
                 <View style={styles.titleTop}>
@@ -93,7 +135,7 @@ class GroupRewards extends Component {
                         style={{ flexDirection: "row", alignItems: "center" }}
                     >
                         <Text style={styles.topBal}>{`Bal: `}</Text>
-                        <Text style={styles.topBalValue}>{`0.00 ${
+                        <Text style={styles.topBalValue}>{`${bal} ${
                             this.coinObj.symbol
                         }`}</Text>
                     </View>
@@ -145,7 +187,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-    coins: state.coins
+    coins: state.coins,
+    user: state.user
 });
 
 export default connect(mapStateToProps)(GroupRewards);

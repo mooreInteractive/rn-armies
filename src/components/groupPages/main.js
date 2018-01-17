@@ -7,15 +7,15 @@ import Miner from "../miner/miner";
 class GroupMain extends Component {
     constructor(props) {
         super(props);
-        this.coinName = props.navigation.state.params.coinName;
-        this.coinKey = props.navigation.state.params.coinKey;
+        this.coinName = props.navigation.state.params.label;
+        this.coinKey = props.navigation.state.params.coin;
         this.coinObj = this.props.coins[this.coinKey];
     }
     static navigationOptions = ({ navigation }) => ({
         tabBarLabel: props => {
             return (
                 <Text style={styles.tabLabel}>
-                    {navigation.state.params.coinName}
+                    {navigation.state.params.label}
                 </Text>
             );
         }
