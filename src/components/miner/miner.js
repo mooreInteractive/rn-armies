@@ -42,6 +42,12 @@ export default class Miner extends Component {
             buttonHandler: this.startMiner
         });
     }
+    componentWillUnmount() {
+        if (this.mineTimer) {
+            clearInterval(this.mineTimer);
+            this.mineTimer = null;
+        }
+    }
     render() {
         return (
             <View style={styles.container}>
