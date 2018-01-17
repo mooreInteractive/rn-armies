@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, Text, Button, ScrollView, StyleSheet } from "react-native";
+import { View, Text, Button, ScrollView, StyleSheet, Image } from "react-native";
 import Card from "./cards/card";
 
 class Wallet extends Component {
@@ -12,10 +12,88 @@ class Wallet extends Component {
           >
             <Text style={styles.header}>Your Wallet</Text>
             <Card>
-                <Text style={styles.text}>Card #1</Text>
+              <View style={{ flex: 1, flexDirection: "row"}}>
+                  <Image
+                    style={styles.image}
+                    source={require("../../assets/icons/BeyCoin.jpeg")}
+                  />
+                <View style={{ marginLeft: 20 }}>
+                  <Text style={styles.subHeader}>Balance: 100,000,000</Text>
+                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                </View>
+              </View>
             </Card>
             <Card>
-                <Text style={styles.text}>Card #2</Text>
+              <View style={{ flex: 1, flexDirection: "row"}}>
+                  <Image
+                    style={styles.image}
+                    source={require("../../assets/icons/BiebCoin.png")}
+                  />
+                <View style={{ marginLeft: 20 }}>
+                  <Text style={styles.subHeader}>Balance: 100</Text>
+                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                </View>
+              </View>
+            </Card>
+            <Card>
+              <View style={{ flex: 1, flexDirection: "row"}}>
+                  <Image
+                    style={styles.image}
+                    source={require("../../assets/icons/GucciCoin.png")}
+                  />
+                <View style={{ marginLeft: 20 }}>
+                  <Text style={styles.subHeader}>Balance: 1,000,000,000</Text>
+                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                </View>
+              </View>
+            </Card>
+            <Card>
+              <View style={{ flex: 1, flexDirection: "row"}}>
+                  <Image
+                    style={styles.image}
+                    source={require("../../assets/icons/HarmonyCoin.jpg")}
+                  />
+                <View style={{ marginLeft: 20 }}>
+                  <Text style={styles.subHeader}>Balance: 1,000</Text>
+                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                </View>
+              </View>
+            </Card>
+            <Card>
+              <View style={{ flex: 1, flexDirection: "row"}}>
+                  <Image
+                    style={styles.image}
+                    source={require("../../assets/icons/KatyCoin.jpg")}
+                  />
+                <View style={{ marginLeft: 20 }}>
+                  <Text style={styles.subHeader}>Balance: 100,000</Text>
+                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                </View>
+              </View>
+            </Card>
+            <Card>
+              <View style={{ flex: 1, flexDirection: "row"}}>
+                  <Image
+                    style={styles.image}
+                    source={require("../../assets/icons/SwiftCoin.jpg")}
+                  />
+                <View style={{ marginLeft: 20 }}>
+                  <Text style={styles.subHeader}>Balance: 100,000,000</Text>
+                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                </View>
+              </View>
+            </Card>
+            <Card>
+              <View style={{ flex: 1, flexDirection: "row"}}>
+                  <Image
+                    style={styles.image}
+                    source={require("../../assets/icons/WuTangCoin.jpg")}
+                  />
+                <View style={{ marginLeft: 20 }}>
+                  <Text style={styles.subHeader}>Balance: 10,000,000</Text>
+                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                </View>
+              </View>
             </Card>
           </ScrollView>
       );
@@ -36,8 +114,22 @@ const styles = StyleSheet.create({
       marginTop: 20,
       marginBottom: 20
     },
+    subHeader: {
+        marginTop: 20,
+        marginBottom: 20,
+        color: "#ffffff",
+        fontSize: 18,
+        fontWeight: "bold"
+    },
+    image: {
+      width: 100,
+      height: 100,
+      borderRadius: 50
+    },
     text: {
-        color: "#ffffff"
+        color: "#ffffff",
+        textAlign: "center",
+        fontSize: 16,
     },
 });
 
