@@ -5,9 +5,7 @@ import { View, Text, Button } from "react-native";
 class Home extends Component {
     render() {
         const { navigate } = this.props.navigation;
-        let beliebers = this.props.groups.filter(
-            group => group === "beliebers"
-        )[0];
+        let beliebers = this.props.coins.beliebers.plural;
         return (
             <View
                 style={{
@@ -18,7 +16,12 @@ class Home extends Component {
             >
                 <Text>Home Screen</Text>
                 <Button
-                    onPress={() => navigate("GroupPage", { group: beliebers })}
+                    onPress={() =>
+                        navigate("GroupPage", {
+                            coinName: beliebers,
+                            coinKey: "beliebers"
+                        })
+                    }
                     title="Go to Beliebers Group"
                 />
                 <Button

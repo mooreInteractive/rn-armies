@@ -59,6 +59,7 @@ export default class Miner extends Component {
                     <Button
                         onPress={this.state.buttonHandler}
                         title={this.state.buttonState}
+                        color="#ffffff"
                     />
                 </View>
             </View>

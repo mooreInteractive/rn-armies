@@ -14,13 +14,12 @@ export default class Card extends Component {
 const styles = StyleSheet.create({
     miner: {
         minHeight: 100,
-        backgroundColor: "#aaaacd",
+        backgroundColor: "#A9A9A9",
         borderRadius: 0
     },
     card: {
-        flex: 1,
         minHeight: 70,
-        backgroundColor: "#333333",
+        backgroundColor: "#656565",
         borderColor: "#dedede",
         borderRadius: 7,
         borderWidth: 1,

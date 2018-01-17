@@ -7,15 +7,15 @@ import Miner from "../miner/miner";
 class GroupMain extends Component {
     constructor(props) {
         super(props);
-        this.currentGroup = props.navigation.state.params.group;
-        console.log("main", props, props.groups);
+        this.coinName = props.navigation.state.params.coinName;
+        this.coinKey = props.navigation.state.params.coinKey;
+        this.coinObj = this.props.coins[this.coinKey];
     }
-    static navigationOptions = ({ navigation, screenProps }) => ({
+    static navigationOptions = ({ navigation }) => ({
         tabBarLabel: props => {
-            console.log("nav options:", screenProps);
             return (
                 <Text style={styles.tabLabel}>
-                    {navigation.state.params.group}
+                    {navigation.state.params.coinName}
                 </Text>
             );
         }
@@ -27,6 +27,19 @@ class GroupMain extends Component {
                 style={styles.container}
                 contentContainerStyle={styles.centering}
             >
+                <View style={styles.titleTop}>
+                    <Text style={styles.title}>
+                        {`Earn ${this.coinObj.symbol}`}
+                    </Text>
+                    <View
+                        style={{ flexDirection: "row", alignItems: "center" }}
+                    >
+                        <Text style={styles.topBal}>{`Price: `}</Text>
+                        <Text style={styles.topBalValue}>{`${
+                            this.coinObj.price
+                        } USD`}</Text>
+                    </View>
+                </View>
                 <Card type={"miner"}>
                     <Text style={styles.minerTitle}>Miner</Text>
                     <Miner />
@@ -54,6 +67,26 @@ const styles = StyleSheet.create({
     },
     text: {
         color: "#ffffff"
+    },
+    titleTop: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        padding: 10
+    },
+    title: {
+        fontSize: 21,
+        fontWeight: "bold",
+        color: "#ffffff",
+        flex: 1
+    },
+    topBal: {
+        fontSize: 18,
+        color: "#ffffff"
+    },
+    topBalValue: {
+        fontSize: 18,
+        color: "#ffffff",
+        fontWeight: "bold"
     },
     minerTitle: {
         color: "#ffffff",
