@@ -15,10 +15,6 @@ class Wallet extends Component {
                 }}
             >
                 <Text>Wallet Screen</Text>
-                <Button
-                    onPress={() => navigate("Home")}
-                    title="Go home"
-                />
             </View>
         )
     };
