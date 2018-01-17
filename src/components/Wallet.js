@@ -31,7 +31,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: 100</Text>
-                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                  <Text style={styles.text}>1 BiebCoin = 1 USD</Text>
                 </View>
               </View>
             </Card>
@@ -43,7 +43,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: 1,000,000,000</Text>
-                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                  <Text style={styles.text}>1 GucciCoin = 1 USD</Text>
                 </View>
               </View>
             </Card>
@@ -55,7 +55,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: 1,000</Text>
-                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                  <Text style={styles.text}>1 HarmonyCoin = 1 USD</Text>
                 </View>
               </View>
             </Card>
@@ -67,7 +67,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: 100,000</Text>
-                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                  <Text style={styles.text}>1 KatyCoin = 1 USD</Text>
                 </View>
               </View>
             </Card>
@@ -79,7 +79,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: 100,000,000</Text>
-                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                  <Text style={styles.text}>1 SwiftCoin = 1 USD</Text>
                 </View>
               </View>
             </Card>
@@ -91,7 +91,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: 10,000,000</Text>
-                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                  <Text style={styles.text}>1 WuTangCoin = 1 USD</Text>
                 </View>
               </View>
             </Card>
@@ -128,8 +128,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: "#ffffff",
-        textAlign: "center",
-        fontSize: 16,
+        fontSize: 14,
     },
 });
 
