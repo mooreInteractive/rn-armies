@@ -87,7 +87,7 @@ class GroupBuySell extends Component {
     sellCoin() {
         console.log("Selling", this.state.sellAmt);
         let currentCoinWallet = this.props.user.wallet.coins.filter(
-            coin => coin.coin === this.coinKey
+            coin => coin.key === this.coinKey
         );
         let userWallet = currentCoinWallet.length
             ? currentCoinWallet[0].amount
@@ -164,7 +164,7 @@ class GroupBuySell extends Component {
         //Change settings if Sell Card
         if (type === "Sell") {
             let owned = this.props.user.wallet.coins.filter(
-                coin => coin.coin === this.coinKey
+                coin => coin.key === this.coinKey
             );
             let ownedCoin = owned.length ? owned[0].amount : 0;
             onChange = sellAmt => this.setState({ sellAmt });

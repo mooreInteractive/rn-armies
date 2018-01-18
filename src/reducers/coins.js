@@ -15,10 +15,10 @@ const getInitialState = () => {
 
 const coinsState = (state = getInitialState(), action) => {
   switch (action.type) {
-    case "ADD_COIN":
-      return state.concat(action.coin);
+    case "BLAH":
+      return state;
     default:
-      return state
+      return state;
   }
 }
 
