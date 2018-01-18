@@ -4,7 +4,7 @@ import { coins } from "../constants/coins";
 const _isValidKey = key => !!coins.find(coin => coin.key === key);
 
 const _updateCoinInCollection = (key, amount, collection) => {
-    if (!_isValidKey(key) return collection;
+    if (!_isValidKey(key)) return collection;
 
     const index = collection.findIndex(coin => {
         return coin.key === key;
