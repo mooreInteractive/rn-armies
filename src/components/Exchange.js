@@ -81,14 +81,42 @@ class Exchange extends Component {
 
         <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', margin: 20}}>
           <Text style={styles.buttonTitle}>% to Exchange:</Text>
-          <Button title="25%" onPress={() => this.setState({ coinOwnedCount: "25" })}/>
-          <Button title="50%" onPress={() => this.setState({ coinOwnedCount: "50" })}/>
-          <Button title="75%" onPress={() => this.setState({ coinOwnedCount: "75" })}/>
-          <Button title="100%" onPress={() => this.setState({ coinOwnedCount: "100" })}/>
+          <Button title="25%" onPress={() => {
+            const value = 0.25 * mapping[this.state.coinOwned].amount * priceMap[this.state.coinOwned].price
+            const desiredCount = Math.round(value / priceMap[this.state.coinDesired].price * 100) / 100
+            this.setState({
+              coinOwnedCount: String(0.25 * mapping[this.state.coinOwned].amount),
+              coinDesiredCount: String(desiredCount)
+            })
+          }}/>
+          <Button title="50%" onPress={() => {
+            const value = 0.5 * mapping[this.state.coinOwned].amount * priceMap[this.state.coinOwned].price
+            const desiredCount = Math.round(value / priceMap[this.state.coinDesired].price * 100) / 100
+            this.setState({
+              coinOwnedCount: String(0.5 * mapping[this.state.coinOwned].amount),
+              coinDesiredCount: String(desiredCount)
+            })
+          }}/>
+          <Button title="75%" onPress={() => {
+            const value = 0.75 * mapping[this.state.coinOwned].amount * priceMap[this.state.coinOwned].price
+            const desiredCount = Math.round(value / priceMap[this.state.coinDesired].price * 100) / 100
+            this.setState({
+              coinOwnedCount: String(0.75 * mapping[this.state.coinOwned].amount),
+              coinDesiredCount: String(desiredCount)
+            })
+          }}/>
+          <Button title="100%" onPress={() => {
+            const value = 1 * mapping[this.state.coinOwned].amount * priceMap[this.state.coinOwned].price
+            const desiredCount = Math.round(value / priceMap[this.state.coinDesired].price * 100) / 100
+            this.setState({
+              coinOwnedCount: String(1 * mapping[this.state.coinOwned].amount),
+              coinDesiredCount: String(desiredCount)
+            })
+          }}/>
         </View>
 
         <Button
-            title="Confirm Transcation"
+            title="Confirm Transaction"
             onPress={() => {}}
         />
 
