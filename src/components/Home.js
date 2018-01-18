@@ -32,19 +32,46 @@ class Home extends Component {
             <View
                 style={{
                     flex: 1,
-                    alignItems: "center"
+                    alignItems: "center",
+                    backgroundColor: "#000000"
                 }}
             >
-                <View style={{ flexDirection: "row" }}>
+                <Text style={styles.mainTitle}>Fan Armies</Text>
+                <View style={styles.tileContainer}>
                     {this.renderArmyButton(
                         "beliebers",
                         "Beliebers",
                         require("../../assets/icons/BiebCoin.png")
                     )}
                     {this.renderArmyButton(
-                        "kaycats",
+                        "katycats",
                         "Katy Cats",
                         require("../../assets/icons/KatyCoin.jpg")
+                    )}
+                    {this.renderArmyButton(
+                        "beyhive",
+                        "Beyhive",
+                        require("../../assets/icons/BeyCoin.jpeg")
+                    )}
+                    {this.renderArmyButton(
+                        "guccigang",
+                        "Gucci Gang",
+                        require("../../assets/icons/GucciCoin.png")
+                    )}
+                    {this.renderArmyButton(
+                        "harmonizers",
+                        "Harmonizers",
+                        require("../../assets/icons/HarmonyCoin.jpg")
+                    )}
+                    {this.renderArmyButton(
+                        "swifties",
+                        "Swifties",
+                        require("../../assets/icons/SwiftCoin.jpg")
+                    )}
+                    {this.renderArmyButton(
+                        "wutang",
+                        "Wu-Tang",
+                        require("../../assets/icons/WuTangCoin.jpg")
                     )}
                 </View>
                 <Button
@@ -60,7 +87,25 @@ class Home extends Component {
     }
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    mainTitle: {
+        fontSize: 28,
+        margin: 10,
+        fontWeight: "bold",
+        color: "#ffffff"
+    },
+    tileContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        flexWrap: "wrap"
+    },
+    groupImage: {
+        width: 115,
+        height: 115,
+        margin: 5
+    }
+});
 
 const mapStateToProps = state => ({
     coins: state.coins
