@@ -7,7 +7,7 @@ class Wallet extends Component {
   render() {
     const mapping = {}
     this.props.ownedCoins.forEach(coin => {
-      mapping[coin.coin] = coin
+      mapping[coin.key] = coin
     })
     console.log(this.props.coins)
     return (
