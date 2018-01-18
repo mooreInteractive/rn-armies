@@ -7,7 +7,7 @@ export const coins = [
         symbol: "B",
     },
     {
-        key: "kaycats",
+        key: "katycats",
         plural: "KatyCats",
         singular: "KatyCat",
         artist: "Katy Perry",
