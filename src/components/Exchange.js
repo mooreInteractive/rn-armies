@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { ScrollView, View, Image, Text, Button, Picker, TextInput, Modal, KeyboardAvoidingView, TouchableWithoutFeedback, StyleSheet } from "react-native";
+import { AlertIOS, ScrollView, View, Image, Text, Button, Picker, TextInput, Modal, KeyboardAvoidingView, TouchableWithoutFeedback, StyleSheet } from "react-native";
 
 class Exchange extends Component {
   constructor(props) {
@@ -37,6 +37,22 @@ class Exchange extends Component {
       priceMap[this.props.coins[coin].coinName].price = this.props.coins[coin].price
     })
 
+    const failConfimBtns = [{
+        text: "Got it",
+        onPress: () => {},
+        style: "cancel"
+    }]
+
+    const successConfimBtns = [{
+        text: "Confirm",
+        onPress: () => {}
+    },
+    {
+        text: "Cancel",
+        onPress: () => {},
+        style: "cancel"
+    }]
+
     return (
       <ScrollView style={styles.container}>
         <Text style={styles.header}>Vevo Coin Exchange</Text>
@@ -49,10 +65,20 @@ class Exchange extends Component {
             </Text>
             <TextInput
               style={styles.numInput}
-              onChangeText={(coinOwnedCount) => this.setState({coinOwnedCount})}
+              onChangeText={(coinOwnedCount) => {
+                if (!coinOwnedCount) coinOwnedCount = "0"
+                coinOwnedCount = Number.parseFloat(coinOwnedCount)
+                const value = coinOwnedCount * priceMap[this.state.coinOwned].price
+                const desiredCount = Math.round(value / priceMap[this.state.coinDesired].price * 100) / 100
+                this.setState({
+                  coinOwnedCount: String(coinOwnedCount),
+                  coinDesiredCount: String(desiredCount)
+                })
+              }}
               value={this.state.coinOwnedCount}
               keyboardType="numeric"
             />
+            <Text style={styles.text}>Value = ${Math.round(this.state.coinOwnedCount * priceMap[this.state.coinOwned].price * 100) / 100}</Text>
             <Text style={styles.text}>1 Coin = ${priceMap[this.state.coinOwned].price}</Text>
           </View>
           <View style={{marginTop: 50}}>
@@ -68,10 +94,19 @@ class Exchange extends Component {
             </Text>
             <TextInput
               style={styles.numInput}
-              onChangeText={(coinDesiredCount) => this.setState({coinDesiredCount})}
+              onChangeText={(coinDesiredCount) => {
+                coinDesiredCount = Number.parseFloat(coinDesiredCount)
+                const value = coinDesiredCount * priceMap[this.state.coinDesired].price
+                const ownedCount = Math.round(value / priceMap[this.state.coinOwned].price * 100) / 100
+                this.setState({
+                  coinOwnedCount: String(ownedCount),
+                  coinDesiredCount: String(coinDesiredCount)
+                })
+              }}
               value={this.state.coinDesiredCount}
               keyboardType="numeric"
             />
+            <Text style={styles.text}>Value = ${Math.round(this.state.coinDesiredCount * priceMap[this.state.coinDesired].price * 100) / 100}</Text>
             <Text style={styles.text}>1 Coin = ${priceMap[this.state.coinDesired].price}</Text>
           </View>
         </View>
@@ -116,8 +151,18 @@ class Exchange extends Component {
         </View>
 
         <Button
-            title="Confirm Transaction"
-            onPress={() => {}}
+            title="Proceed to Confirmation"
+            onPress={() => {
+              if (Number.parseFloat(this.state.coinOwnedCount) === 0) {
+                AlertIOS.alert("Failed Transaction", "You are trying to exchange 0 " + this.state.coinOwned, failConfimBtns);
+              } else if (Number.parseFloat(this.state.coinOwnedCount) > mapping[this.state.coinOwned].amount) {
+                AlertIOS.alert("Failed Transaction", "You do not have enough " + this.state.coinOwned, failConfimBtns);
+              } else {
+                AlertIOS.alert("Confirm Transaction", "You are exchanging \n" + this.state.coinOwnedCount + " "
+                + this.state.coinOwned + " for " + this.state.coinDesiredCount + " " + this.state.coinDesired +
+                ".", successConfimBtns);
+              }
+            }}
         />
 
         <Modal
