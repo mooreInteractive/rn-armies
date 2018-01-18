@@ -1,5 +1,5 @@
 import { getRandomWallet } from "../helpers/randoms";
-import { ADD_CASH } from "../actions/user";
+import { ADD_CASH, SUBTRACT_CASH, ADD_COIN, SUBTRACT_COIN } from "../actions/user";
 
 const getInitialState = () => ({
     name: "Bob Belcher",
@@ -14,6 +14,14 @@ const user = (state = getInitialState(), action) => {
                 wallet: {
                     ...state.wallet,
                     dollars: state.wallet.dollars + action.dollars
+                }
+            };
+        case SUBTRACT_CASH:
+            return {
+                ...state,
+                wallet: {
+                    ...state.wallet,
+                    dollars: state.wallet.dollars - action.dollars
                 }
             };
         default:
