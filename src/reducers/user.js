@@ -1,4 +1,5 @@
 import { getRandomWallet } from "../helpers/randoms";
+import { ADD_CASH } from "../actions/user";
 
 const getInitialState = () => ({
     name: "Bob Belcher",
@@ -6,12 +7,18 @@ const getInitialState = () => ({
 });
 
 const user = (state = getInitialState(), action) => {
-  switch (action.type) {
-    case "ADD_COIN":
-      return state;
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case ADD_CASH:
+            return {
+                ...state,
+                wallet: {
+                    ...state.wallet,
+                    dollars: state.wallet.dollars + action.dollars
+                }
+            };
+        default:
+            return state;
+    }
 }
 
 export default user;
