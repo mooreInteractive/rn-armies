@@ -1,25 +1,11 @@
-import { coins } from "../constants/coins";
-import { getRandomPrice, getRandomSupply } from "../helpers/randoms";
+import init from "../helpers/initStates.js"
+import * as STATE from "../constants/states";
 
-const getInitialState = () => {
-    return coins.reduce((state, coin) => {
-        state[coin.key] = {
-            ...coin,
-            price: getRandomPrice(),
-            supply: getRandomSupply(),
-            rewards: {},
-        };
-        return state;
-    }, {});
-};
-
-const coinsState = (state = getInitialState(), action) => {
+const coins = (state = init(STATE.coins), action) => {
   switch (action.type) {
-    case "BLAH":
-      return state;
     default:
       return state;
   }
 }
 
-export default coinsState;
+export default coins;

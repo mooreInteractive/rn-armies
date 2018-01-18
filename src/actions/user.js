@@ -1,35 +1,28 @@
-// Action types
-export const ADD_COIN = "ADD_COIN";
-export const SUBTRACT_COIN = "SUBTRACT_COIN";
-
-export const ADD_CASH = "ADD_CASH";
-export const SUBTRACT_CASH = "SUBTRACT_CASH";
-
-export const EXCHANGE_COIN = "EXCHANGE_COIN";
+import { USER } from "../constants/types";
 
 // Action creators
 export const addCoinToWallet = (key, amount) => ({
-   type: ADD_COIN,
+   type: USER.ADD_COIN,
    key,
    amount
 });
 
 export const subtractCoinFromWallet = (key, amount) => ({
-    type: SUBTRACT_COIN,
+    type: USER.SUBTRACT_COIN,
     key,
     amount
 });
 
 export const addCashToWallet = dollars => ({
-    type: ADD_CASH,
+    type: USER.ADD_CASH,
     dollars
 });
 
 export const subtractCashFromWallet = dollars => ({
-    type: SUBTRACT_CASH,
+    type: USER.SUBTRACT_CASH,
     dollars
 });
 
 export const exchangeCoin = () => ({
-    type: EXCHANGE_COIN,
+    type: USER.EXCHANGE_COIN,
 });

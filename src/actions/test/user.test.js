@@ -1,11 +1,12 @@
 import * as actions from "../user.js";
+import { USER } from "../../constants/types";
 
 describe("user actions", () => {
     describe("addCoinToWallet", () => {
         it("should create action to add coin to wallet", () => {
             const coin = { key: "belieber", amount: 100 }
             const expectedAction = {
-                type: actions.ADD_COIN,
+                type: USER.ADD_COIN,
                 key: coin.key,
                 amount: coin.amount
             }
@@ -18,7 +19,7 @@ describe("user actions", () => {
         it("should create action to subtract coin to wallet", () => {
             const coin = { key: "belieber", amount: 100 }
             const expectedAction = {
-                type: actions.SUBTRACT_COIN,
+                type: USER.SUBTRACT_COIN,
                 key: coin.key,
                 amount: coin.amount
             }
@@ -30,7 +31,7 @@ describe("user actions", () => {
     describe("addCashToWallet", () => {
         it("should create action to add cash to wallet", () => {
             const expectedAction = {
-                type: actions.ADD_CASH,
+                type: USER.ADD_CASH,
                 dollars: 100
             }
             const resultAction = actions.addCashToWallet(100);
@@ -41,7 +42,7 @@ describe("user actions", () => {
     describe("subtractCashFromWallet", () => {
         it("should create action to subtract cash from wallet", () => {
             const expectedAction = {
-                type: actions.SUBTRACT_CASH,
+                type: USER.SUBTRACT_CASH,
                 dollars: 100
             }
             const resultAction = actions.subtractCashFromWallet(100);

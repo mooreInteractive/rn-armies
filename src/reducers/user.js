@@ -1,15 +1,11 @@
-import { getRandomWallet } from "../helpers/randoms";
 import { addCoinToCollection, subtractCoinFromCollection } from "../helpers/coins";
-import { ADD_CASH, SUBTRACT_CASH, ADD_COIN, SUBTRACT_COIN } from "../actions/user";
+import init from "../helpers/initStates";
+import * as STATES from "../constants/states";
+import { USER } from "../constants/types";
 
-const getInitialState = () => ({
-    name: "Bob Belcher",
-    wallet: getRandomWallet(),
-});
-
-const user = (state = getInitialState(), action) => {
+const user = (state = init(STATES.user), action) => {
     switch (action.type) {
-        case ADD_CASH:
+        case USER.ADD_CASH:
             return {
                 ...state,
                 wallet: {
@@ -17,7 +13,7 @@ const user = (state = getInitialState(), action) => {
                     dollars: state.wallet.dollars + action.dollars
                 }
             };
-        case SUBTRACT_CASH:
+        case USER.SUBTRACT_CASH:
             return {
                 ...state,
                 wallet: {
@@ -25,7 +21,7 @@ const user = (state = getInitialState(), action) => {
                     dollars: state.wallet.dollars - action.dollars
                 }
             };
-        case ADD_COIN:
+        case USER.ADD_COIN:
             return {
                 ...state,
                 wallet: {
@@ -37,7 +33,7 @@ const user = (state = getInitialState(), action) => {
                     )
                 }
             };
-        case SUBTRACT_COIN:
+        case USER.SUBTRACT_COIN:
             return {
                 ...state,
                 wallet: {
