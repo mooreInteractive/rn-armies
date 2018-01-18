@@ -13,8 +13,7 @@ const _getInitialCoinsState = () => {
         state[coin.key] = {
             ...coin,
             price: Random.generatePrice(),
-            supply: Random.generateSupply(),
-            rewards: {},
+            supply: Random.generateSupply()
         };
         return state;
     }, {});
