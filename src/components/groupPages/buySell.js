@@ -20,8 +20,6 @@ class GroupBuySell extends Component {
         this.coinKey = props.navigation.state.params.coin;
         this.coinObj = this.props.coins[this.coinKey];
 
-        console.log("user:", this.props.user);
-
         this.buyCoin = this.buyCoin.bind(this);
         this.sellCoin = this.sellCoin.bind(this);
 

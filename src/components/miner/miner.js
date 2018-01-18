@@ -12,7 +12,8 @@ export default class Miner extends Component {
             currentCoinProgress: 0,
             buttonState: "start",
             buttonHandler: this.startMiner,
-            currentBalance: 0
+            currentBalance: this.props.currentBalance,
+            buttonColor: "#3434DE"
         };
     }
     incrementMiner() {
@@ -31,7 +32,8 @@ export default class Miner extends Component {
         this.mineTimer = setInterval(this.incrementMiner, 100);
         this.setState({
             buttonState: "stop",
-            buttonHandler: this.stopMiner
+            buttonHandler: this.stopMiner,
+            buttonColor: "#DE3434"
         });
     }
     stopMiner() {
@@ -39,7 +41,8 @@ export default class Miner extends Component {
         this.mineTimer = null;
         this.setState({
             buttonState: "start",
-            buttonHandler: this.startMiner
+            buttonHandler: this.startMiner,
+            buttonColor: "#3434DE"
         });
     }
     componentWillUnmount() {
@@ -54,7 +57,9 @@ export default class Miner extends Component {
                 <View style={styles.balContainer}>
                     <Text style={styles.balLabel}>Bal:</Text>
                     <Text style={styles.balValue}>
-                        {this.state.currentBalance.toFixed(2)}
+                        {`${this.state.currentBalance.toFixed(2)} ${
+                            this.props.symbol
+                        }`}
                     </Text>
                 </View>
                 <Text style={styles.progressText}>{`${
@@ -65,7 +70,7 @@ export default class Miner extends Component {
                     <Button
                         onPress={this.state.buttonHandler}
                         title={this.state.buttonState}
-                        color="#ffffff"
+                        color={this.state.buttonColor}
                     />
                 </View>
             </View>

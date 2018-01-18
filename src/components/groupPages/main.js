@@ -10,6 +10,9 @@ class GroupMain extends Component {
         this.coinName = props.navigation.state.params.label;
         this.coinKey = props.navigation.state.params.coin;
         this.coinObj = this.props.coins[this.coinKey];
+        this.coinWallet = this.props.user.wallet.coins.filter(
+            coin => coin.coin === this.coinKey
+        );
     }
     static navigationOptions = ({ navigation }) => ({
         tabBarLabel: props => {
@@ -22,6 +25,7 @@ class GroupMain extends Component {
     });
 
     render() {
+        let currentBal = this.coinWallet.length ? this.coinWallet[0].amount : 0;
         return (
             <ScrollView
                 style={styles.container}
@@ -42,7 +46,10 @@ class GroupMain extends Component {
                 </View>
                 <Card type={"miner"}>
                     <Text style={styles.minerTitle}>Miner</Text>
-                    <Miner />
+                    <Miner
+                        currentBalance={currentBal}
+                        symbol={this.coinObj.symbol}
+                    />
                 </Card>
                 <Card>
                     <Text style={styles.text}>Card #1</Text>
@@ -103,7 +110,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-    coins: state.coins
+    coins: state.coins,
+    user: state.user
 });
 
 export default connect(mapStateToProps)(GroupMain);
