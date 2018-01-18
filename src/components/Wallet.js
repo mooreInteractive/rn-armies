@@ -9,7 +9,6 @@ class Wallet extends Component {
     this.props.ownedCoins.forEach(coin => {
       mapping[coin.key] = coin
     })
-    console.log(this.props.coins)
     return (
         <ScrollView
             style={styles.container}
@@ -25,7 +24,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: {mapping.beyhive.amount}</Text>
-                  <Text style={styles.text}>1 BeyCoin = {this.props.coins.beyhive.price}USD</Text>
+                  <Text style={styles.text}>1 BeyCoin = {this.props.coins.beyhive.price} USD</Text>
                 </View>
               </View>
             </Card>
@@ -40,7 +39,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: {mapping.beliebers.amount}</Text>
-                  <Text style={styles.text}>1 BiebCoin = {this.props.coins.beliebers.price}USD</Text>
+                  <Text style={styles.text}>1 BiebCoin = {this.props.coins.beliebers.price} USD</Text>
                 </View>
               </View>
             </Card>
@@ -55,7 +54,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: {mapping.guccigang.amount}</Text>
-                  <Text style={styles.text}>1 GucciCoin = {this.props.coins.guccigang.price}USD</Text>
+                  <Text style={styles.text}>1 GucciCoin = {this.props.coins.guccigang.price} USD</Text>
                 </View>
               </View>
             </Card>
@@ -70,7 +69,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: {mapping.harmonizers.amount}</Text>
-                  <Text style={styles.text}>1 HarmonyCoin = {this.props.coins.harmonizers.price}USD</Text>
+                  <Text style={styles.text}>1 HarmonyCoin = {this.props.coins.harmonizers.price} USD</Text>
                 </View>
               </View>
             </Card>
@@ -85,7 +84,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: {mapping.katycats.amount}</Text>
-                  <Text style={styles.text}>1 KatyCoin = {this.props.coins.katycats.price}USD</Text>
+                  <Text style={styles.text}>1 KatyCoin = {this.props.coins.katycats.price} USD</Text>
                 </View>
               </View>
             </Card>
@@ -100,7 +99,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: {mapping.swifties.amount}</Text>
-                  <Text style={styles.text}>1 SwiftCoin = {this.props.coins.swifties.price}USD</Text>
+                  <Text style={styles.text}>1 SwiftCoin = {this.props.coins.swifties.price} USD</Text>
                 </View>
               </View>
             </Card>
@@ -115,7 +114,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: {mapping.wutang.amount}</Text>
-                  <Text style={styles.text}>1 WuTangCoin = {this.props.coins.wutang.price}USD</Text>
+                  <Text style={styles.text}>1 WuTangCoin = {this.props.coins.wutang.price} USD</Text>
                 </View>
               </View>
             </Card>
