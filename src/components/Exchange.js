@@ -26,6 +26,17 @@ class Exchange extends Component {
   render() {
     const { navigate } = this.props.navigation;
 
+    const mapping = {}
+    this.props.ownedCoins.forEach(coin => {
+      mapping[this.props.coins[coin.key].coinName] = coin
+    })
+
+    const priceMap = {}
+    Object.keys(this.props.coins).forEach(coin => {
+      priceMap[this.props.coins[coin].coinName] = {}
+      priceMap[this.props.coins[coin].coinName].price = this.props.coins[coin].price
+    })
+
     return (
       <ScrollView style={styles.container}>
         <Text style={styles.header}>Vevo Coin Exchange</Text>
@@ -42,6 +53,7 @@ class Exchange extends Component {
               value={this.state.coinOwnedCount}
               keyboardType="numeric"
             />
+            <Text style={styles.text}>1 Coin = ${priceMap[this.state.coinOwned].price}</Text>
           </View>
           <View style={{marginTop: 50}}>
             <Image
@@ -60,10 +72,12 @@ class Exchange extends Component {
               value={this.state.coinDesiredCount}
               keyboardType="numeric"
             />
+            <Text style={styles.text}>1 Coin = ${priceMap[this.state.coinDesired].price}</Text>
           </View>
         </View>
 
-        <Text style={styles.subHeader}>You have XX {this.state.coinOwned} in your wallet</Text>
+        <Text style={styles.subHeader}>You have {mapping[this.state.coinOwned].amount} {this.state.coinOwned} worth
+          ${Math.round(mapping[this.state.coinOwned].amount * this.props.coins[mapping[this.state.coinOwned].key].price * 100) / 100}</Text>
 
         <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', margin: 20}}>
           <Text style={styles.buttonTitle}>% to Exchange:</Text>
@@ -73,9 +87,8 @@ class Exchange extends Component {
           <Button title="100%" onPress={() => this.setState({ coinOwnedCount: "100" })}/>
         </View>
 
-        <Text style={styles.subHeader}>You are exchanging {this.state.coinOwnedCount} {this.state.coinOwned} for XX {this.state.coinDesired}</Text>
         <Button
-            title="Confirm"
+            title="Confirm Transcation"
             onPress={() => {}}
         />
 
@@ -170,7 +183,8 @@ const styles = StyleSheet.create({
     subHeader: {
         color: "#ffffff",
         fontSize: 16,
-        fontWeight: "bold"
+        fontWeight: "bold",
+        marginBottom: 3
     },
     buttonTitle: {
         color: "#ffffff",
@@ -185,6 +199,12 @@ const styles = StyleSheet.create({
         marginTop: 5,
         marginBottom: 5,
         paddingLeft: 5
+    },
+    text: {
+        color: "#ffffff",
+        fontSize: 14,
+        marginTop: 3,
+        marginBottom: 3
     },
 });
 
