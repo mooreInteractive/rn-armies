@@ -126,6 +126,15 @@ export const coins = [
         ]
     },
     {
+        key: "guccigang",
+        plural: "Gucci Gang",
+        singular: "Gucci Gang",
+        artist: "Lil Pump",
+        coinImg: "GucciCoin.png",
+        coinName: "GucciCoin",
+        symbol: "GG"
+    },
+    {
         key: "harmonizers",
         plural: "Harmonizers",
         singular: "Harmonizer",
@@ -162,6 +171,15 @@ export const coins = [
                 gift: 0.2
             }
         ]
+    },
+    {
+        key: "katycats",
+        plural: "KatyCats",
+        singular: "KatyCat",
+        artist: "Katy Perry",
+        coinImg: "KatyCoin.jpg",
+        coinName: "KatyCoin",
+        symbol: "KC"
     },
     {
         key: "swifties",
