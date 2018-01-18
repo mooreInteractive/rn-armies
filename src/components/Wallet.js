@@ -4,6 +4,45 @@ import { View, Text, Button, ScrollView, StyleSheet, Image } from "react-native"
 import Card from "./cards/card";
 
 class Wallet extends Component {
+  constructor() {
+    super()
+    this.state = {
+      prices: {
+        BeyCoin: 1,
+        BiebCoin: 1,
+        GucciCoin: 1,
+        HarmonyCoin: 1,
+        KatyCoin: 1,
+        SwiftCoin: 1,
+        WuTangCoin: 1,
+      }
+    }
+    this.updatePrices.bind(this)
+  }
+
+  componentDidMount() {
+    this.updatePrices()
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer)
+  }
+
+  updatePrices() {
+    this.setState({
+      prices: {
+        BeyCoin: String(Math.random() * 10).substring(0,6),
+        BiebCoin: String(Math.random() * 10).substring(0,6),
+        GucciCoin: String(Math.random() * 10).substring(0,6),
+        HarmonyCoin: String(Math.random() * 10).substring(0,6),
+        KatyCoin: String(Math.random() * 10).substring(0,6),
+        SwiftCoin: String(Math.random() * 10).substring(0,6),
+        WuTangCoin: String(Math.random() * 10).substring(0,6),
+      }
+    })
+    this.timer = setTimeout(() => {this.updatePrices()}, 3000)
+  }
+
   render() {
       return (
           <ScrollView
@@ -19,7 +58,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: 100,000,000</Text>
-                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                  <Text style={styles.text}>100 BeyCoin = {this.state.prices.BeyCoin} USD</Text>
                 </View>
               </View>
             </Card>
@@ -31,7 +70,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: 100</Text>
-                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                  <Text style={styles.text}>100 BiebCoin = {this.state.prices.BiebCoin} USD</Text>
                 </View>
               </View>
             </Card>
@@ -43,7 +82,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: 1,000,000,000</Text>
-                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                  <Text style={styles.text}>100 GucciCoin = {this.state.prices.GucciCoin} USD</Text>
                 </View>
               </View>
             </Card>
@@ -55,7 +94,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: 1,000</Text>
-                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                  <Text style={styles.text}>100 HarmonyCoin = {this.state.prices.HarmonyCoin} USD</Text>
                 </View>
               </View>
             </Card>
@@ -67,7 +106,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: 100,000</Text>
-                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                  <Text style={styles.text}>100 KatyCoin = {this.state.prices.KatyCoin} USD</Text>
                 </View>
               </View>
             </Card>
@@ -79,7 +118,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: 100,000,000</Text>
-                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                  <Text style={styles.text}>100 SwiftCoin = {this.state.prices.SwiftCoin} USD</Text>
                 </View>
               </View>
             </Card>
@@ -91,7 +130,7 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: 10,000,000</Text>
-                  <Text style={styles.text}>1 BeyCoin = 1 USD</Text>
+                  <Text style={styles.text}>100 WuTangCoin = {this.state.prices.WuTangCoin} USD</Text>
                 </View>
               </View>
             </Card>
@@ -128,8 +167,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: "#ffffff",
-        textAlign: "center",
-        fontSize: 16,
+        fontSize: 14,
     },
 });
 

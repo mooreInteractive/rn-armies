@@ -48,7 +48,7 @@ export const getRandomSupply = () => {
 };
 
 export const getRandomWallet = () => ({
-    cash: _getRandomCashAmount(),
+    dollars: _getRandomCashAmount(),
     coins: _getRandomCoinCollection()
 });
 
