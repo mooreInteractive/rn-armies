@@ -24,6 +24,10 @@ class Wallet extends Component {
     this.updatePrices()
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.timer)
+  }
+
   updatePrices() {
     this.setState({
       prices: {
@@ -36,7 +40,7 @@ class Wallet extends Component {
         WuTangCoin: String(Math.random() * 10).substring(0,6),
       }
     })
-    setTimeout(() => {this.updatePrices()}, 3000)
+    this.timer = setTimeout(() => {this.updatePrices()}, 3000)
   }
 
   render() {
