@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { StyleSheet, View, Image, Text, Button, AlertIOS } from "react-native";
+import {
+    StyleSheet,
+    View,
+    Image,
+    Text,
+    Button,
+    AlertIOS,
+    ScrollView
+} from "react-native";
 import { tabStyles } from "./groupTabsStyles.js";
 import Card from "../cards/card";
 
@@ -13,23 +21,6 @@ class GroupRewards extends Component {
         this.coinWallet = this.props.user.wallet.coins.filter(
             coin => coin.coin === this.coinKey
         );
-        this.state = {
-            rewards: [
-                {
-                    type: "tweet",
-                    title: "@Mention from Artist",
-                    desc: "A robot will tweet at you from Artist's account.",
-                    cost: 100
-                },
-                {
-                    type: "tickets",
-                    title: "2 Tickets to See Artist",
-                    desc:
-                        "You and a friend will get nosebleed, cant-see-shit seats for free*",
-                    cost: 10000
-                }
-            ]
-        };
     }
 
     static navigationOptions = {
@@ -88,11 +79,11 @@ class GroupRewards extends Component {
 
     renderRewards() {
         let rewards = [];
-        this.state.rewards.forEach((reward, index) => {
+        this.coinObj.rewards.forEach((reward, index) => {
             let typeColor = reward.type === "tweet" ? "#1DA1F2" : "#AAB8C2";
             let typeStyle = { color: typeColor };
             rewards.push(
-                <Card key={`index-${reward.type}`}>
+                <Card key={`${index}-${reward.type}`}>
                     <View style={styles.rewardTop}>
                         <Text style={styles.rewardTitle}>{reward.title}</Text>
                         <Text style={[styles.rewardType, typeStyle]}>
@@ -126,7 +117,10 @@ class GroupRewards extends Component {
     render() {
         let bal = this.coinWallet.length ? this.coinWallet[0].amount : 0;
         return (
-            <View style={tabStyles.page}>
+            <ScrollView
+                style={styles.container}
+                contentContainerStyle={styles.centering}
+            >
                 <View style={styles.titleTop}>
                     <Text style={styles.title}>
                         {`${this.coinName} Rewards`}
@@ -141,12 +135,21 @@ class GroupRewards extends Component {
                     </View>
                 </View>
                 {this.renderRewards()}
-            </View>
+            </ScrollView>
         );
     }
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "#131313",
+        flexDirection: "column"
+    },
+    centering: {
+        alignItems: "center",
+        justifyContent: "flex-start"
+    },
     rewardTop: {
         flexDirection: "row",
         justifyContent: "space-between",

@@ -6,20 +6,19 @@ const getInitialState = () => {
         state[coin.key] = {
             ...coin,
             price: getRandomPrice(),
-            supply: getRandomSupply(),
-            rewards: {},
+            supply: getRandomSupply()
         };
         return state;
     }, {});
 };
 
 const coinsState = (state = getInitialState(), action) => {
-  switch (action.type) {
-    case "ADD_COIN":
-      return state.concat(action.coin);
-    default:
-      return state
-  }
-}
+    switch (action.type) {
+        case "ADD_COIN":
+            return state.concat(action.coin);
+        default:
+            return state;
+    }
+};
 
 export default coinsState;

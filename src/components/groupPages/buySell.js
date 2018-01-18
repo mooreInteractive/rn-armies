@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import { tabStyles } from "./groupTabsStyles.js";
 import Card from "../cards/card";
+import CoinMovement from "../coinMovement";
 
 class GroupBuySell extends Component {
     constructor(props) {
@@ -228,6 +229,7 @@ class GroupBuySell extends Component {
                 {this.renderTitleSection()}
                 {this.renderBuyCard("Buy")}
                 {this.renderBuyCard("Sell")}
+                <CoinMovement />
             </ScrollView>
         );
     }
