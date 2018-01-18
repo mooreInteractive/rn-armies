@@ -8,16 +8,16 @@ export const SUBTRACT_CASH = "SUBTRACT_CASH";
 export const EXCHANGE_COIN = "EXCHANGE_COIN";
 
 // Action creators
-export const addCoinToWallet = (coinKey, coinAmount) => ({
-    type: ADD_COIN,
-    coin: coinKey,
-    amount: coinAmount
+export const addCoinToWallet = (key, amount) => ({
+   type: ADD_COIN,
+   key,
+   amount
 });
 
-export const subtractCoinFromWallet = (coinKey, coinAmount) => ({
+export const subtractCoinFromWallet = (key, amount) => ({
     type: SUBTRACT_COIN,
-    coin: coinKey,
-    amount: coinAmount
+    key,
+    amount
 });
 
 export const addCashToWallet = dollars => ({

@@ -108,7 +108,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-    coins: state.coins
+    coins: state.coins,
+    user: state.user
 });
 
 export default connect(mapStateToProps)(Home);

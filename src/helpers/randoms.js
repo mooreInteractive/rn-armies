@@ -28,7 +28,7 @@ const _getRandomCoinCollection = () => {
     return coins.reduce((collection, coin) => {
         if (Math.random() > .40) {
             collection.push({
-                coin: coin.key,
+                key: coin.key,
                 amount: _getRandomCoinAmount()
             });
         }

@@ -11,7 +11,7 @@ class GroupMain extends Component {
         this.coinKey = props.navigation.state.params.coin;
         this.coinObj = this.props.coins[this.coinKey];
         this.coinWallet = this.props.user.wallet.coins.filter(
-            coin => coin.coin === this.coinKey
+            coin => coin.key === this.coinKey
         );
     }
 
