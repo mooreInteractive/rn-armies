@@ -62,7 +62,7 @@ class Home extends Component {
                     backgroundColor: "#000000"
                 }}
             >
-                <Text style={styles.mainTitle}>Fan Armies</Text>
+                <Image style={styles.mainImage} source={require("../../assets/icons/armylogo.png")} />
                 <View style={styles.tileContainer}>
                     {this.renderArmyButton(
                         "beliebers",
@@ -106,11 +106,10 @@ class Home extends Component {
 }
 
 const styles = StyleSheet.create({
-    mainTitle: {
-        fontSize: 28,
-        margin: 10,
-        fontWeight: "bold",
-        color: "#ffffff"
+    mainImage: {
+      height: 200,
+      resizeMode: "contain",
+      margin: 30
     },
     tileContainer: {
         flexDirection: "row",
@@ -119,8 +118,8 @@ const styles = StyleSheet.create({
         flexWrap: "wrap"
     },
     groupImage: {
-        width: 115,
-        height: 115,
+        width: 75,
+        height: 75,
         margin: 5
     },
     headerImage: {
