@@ -38,44 +38,6 @@ export const coins = [
         ]
     },
     {
-        key: "katycats",
-        plural: "KatyCats",
-        singular: "KatyCat",
-        artist: "Katy Perry",
-        coinImg: "KatyCoin.jpg",
-        coinName: "KatyCoin",
-        symbol: "KC",
-        rewards: [
-            {
-                type: "tweet",
-                title: "@Mention from Katy",
-                desc: "A robot will tweet at you from Katy's legit account.",
-                cost: 1000
-            },
-            {
-                type: "tickets",
-                title: "2 Tickets to See Katy",
-                desc:
-                    "You and a friend will get nosebleed, cant-see-shit seats for free*",
-                cost: 100
-            }
-        ],
-        actions: [
-            {
-                type: "tweet",
-                title: "Retweet #KatyCats",
-                desc: "Send a tweet, get Katy Coin! Spread the word!",
-                gift: 0.1
-            },
-            {
-                type: "facebook",
-                title: "Post about Katy",
-                desc: "Get your friend(s) on facebook to spend money.",
-                gift: 0.2
-            }
-        ]
-    },
-    {
         key: "beyhive",
         plural: "Beyhive",
         singular: "Beyhive",
@@ -126,82 +88,6 @@ export const coins = [
         ]
     },
     {
-        key: "harmonizers",
-        plural: "Harmonizers",
-        singular: "Harmonizer",
-        artist: "Fifth Harmony",
-        coinImg: "HarmonyCoin.jpg",
-        coinName: "HarmonyCoin",
-        symbol: "H",
-        rewards: [
-            {
-                type: "tweet",
-                title: "@Mention from one of the 4 girls left",
-                desc: "A robot will tweet at you from someone's account.",
-                cost: 44
-            },
-            {
-                type: "tickets",
-                title: "2 Tickets to See Fifth Harmony",
-                desc:
-                    "You and a friend will get nosebleed, cant-see-shit seats for free*",
-                cost: 500
-            }
-        ],
-        actions: [
-            {
-                type: "tweet",
-                title: "Retweet #Harmonizers",
-                desc: "Send a tweet, get Harmony Coin! Spread the word!",
-                gift: 0.1
-            },
-            {
-                type: "facebook",
-                title: "Post about FH",
-                desc: "Get your friend(s) on facebook to spend money.",
-                gift: 0.2
-            }
-        ]
-    },
-    {
-        key: "swifties",
-        plural: "Swifties",
-        singular: "Swiftie",
-        artist: "Taylor Swift",
-        coinImg: "SwiftCoin.jpg",
-        coinName: "SwiftCoin",
-        symbol: "S",
-        rewards: [
-            {
-                type: "tweet",
-                title: "@Mention from Taylor",
-                desc: "A robot will tweet at you from Taylor's account.",
-                cost: 3000
-            },
-            {
-                type: "tickets",
-                title: "2 Tickets to See Taylor",
-                desc:
-                    "You and a friend will get nosebleed, cant-see-shit seats for free*",
-                cost: 100000
-            }
-        ],
-        actions: [
-            {
-                type: "tweet",
-                title: "Retweet #Swifties",
-                desc: "Send a tweet, get Swift Coin! Spread the word!",
-                gift: 0.1
-            },
-            {
-                type: "facebook",
-                title: "Post about Taylor",
-                desc: "Get your friend(s) on facebook to spend money.",
-                gift: 0.2
-            }
-        ]
-    },
-    {
         key: "guccigang",
         plural: "Gucci Gang",
         singular: "Gucci Gang",
@@ -241,6 +127,120 @@ export const coins = [
             {
                 type: "facebook",
                 title: "Post about Lil Pump",
+                desc: "Get your friend(s) on facebook to spend money.",
+                gift: 0.2
+            }
+        ]
+    },
+    {
+        key: "harmonizers",
+        plural: "Harmonizers",
+        singular: "Harmonizer",
+        artist: "Fifth Harmony",
+        coinImg: "HarmonyCoin.jpg",
+        coinName: "HarmonyCoin",
+        symbol: "H",
+        rewards: [
+            {
+                type: "tweet",
+                title: "@Mention from one of the 4 girls left",
+                desc: "A robot will tweet at you from someone's account.",
+                cost: 44
+            },
+            {
+                type: "tickets",
+                title: "2 Tickets to See Fifth Harmony",
+                desc:
+                    "You and a friend will get nosebleed, cant-see-shit seats for free*",
+                cost: 500
+            }
+        ],
+        actions: [
+            {
+                type: "tweet",
+                title: "Retweet #Harmonizers",
+                desc: "Send a tweet, get Harmony Coin! Spread the word!",
+                gift: 0.1
+            },
+            {
+                type: "facebook",
+                title: "Post about FH",
+                desc: "Get your friend(s) on facebook to spend money.",
+                gift: 0.2
+            }
+        ]
+    },
+    {
+        key: "katycats",
+        plural: "KatyCats",
+        singular: "KatyCat",
+        artist: "Katy Perry",
+        coinImg: "KatyCoin.jpg",
+        coinName: "KatyCoin",
+        symbol: "KC",
+        rewards: [
+            {
+                type: "tweet",
+                title: "@Mention from Katy",
+                desc: "A robot will tweet at you from Katy's legit account.",
+                cost: 1000
+            },
+            {
+                type: "tickets",
+                title: "2 Tickets to See Katy",
+                desc:
+                    "You and a friend will get nosebleed, cant-see-shit seats for free*",
+                cost: 100
+            }
+        ],
+        actions: [
+            {
+                type: "tweet",
+                title: "Retweet #KatyCats",
+                desc: "Send a tweet, get Katy Coin! Spread the word!",
+                gift: 0.1
+            },
+            {
+                type: "facebook",
+                title: "Post about Katy",
+                desc: "Get your friend(s) on facebook to spend money.",
+                gift: 0.2
+            }
+        ]
+    },
+    {
+        key: "swifties",
+        plural: "Swifties",
+        singular: "Swiftie",
+        artist: "Taylor Swift",
+        coinImg: "SwiftCoin.jpg",
+        coinName: "SwiftCoin",
+        symbol: "S",
+        rewards: [
+            {
+                type: "tweet",
+                title: "@Mention from Taylor",
+                desc: "A robot will tweet at you from Taylor's account.",
+                cost: 3000
+            },
+            {
+                type: "tickets",
+                title: "2 Tickets to See Taylor",
+                desc:
+                    "You and a friend will get nosebleed, cant-see-shit seats for free*",
+                cost: 100000
+            }
+        ],
+        actions: [
+            {
+                type: "tweet",
+                title: "Retweet #Swifties",
+                desc: "Send a tweet, get Swift Coin! Spread the word!",
+                gift: 0.1
+            },
+            {
+                type: "facebook",
+                title: "Post about Taylor",
                 desc: "Get your friend(s) on facebook to spend money.",
                 gift: 0.2
             }

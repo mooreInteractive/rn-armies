@@ -8,14 +8,21 @@ class Wallet extends Component {
     const mapping = {}
     this.props.ownedCoins.forEach(coin => {
       mapping[coin.key] = coin
+      mapping[coin.key].price = this.props.coins[coin.key].price
     })
-    console.log(this.props.coins)
+
+    let total = 0
+    Object.keys(mapping).forEach(coin => {
+      total = total + mapping[coin].price * mapping[coin].amount
+    })
+    total = Math.round(total * 100) / 100
+
     return (
         <ScrollView
             style={styles.container}
             contentContainerStyle={styles.centering}
         >
-          <Text style={styles.header}>Your Wallet</Text>
+          <Text style={styles.header}>Your Wallet: ${total}</Text>
           { mapping.beyhive &&
             <Card>
               <View style={{ flex: 1, flexDirection: "row"}}>
@@ -25,7 +32,8 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: {mapping.beyhive.amount}</Text>
-                  <Text style={styles.text}>1 BeyCoin = {this.props.coins.beyhive.price}USD</Text>
+                  <Text style={styles.text}>Total Value: ${Math.round(mapping.beyhive.amount * this.props.coins.beyhive.price * 100) / 100 }</Text>
+                  <Text style={styles.text}>1 BeyCoin = {this.props.coins.beyhive.price} USD</Text>
                 </View>
               </View>
             </Card>
@@ -40,7 +48,8 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: {mapping.beliebers.amount}</Text>
-                  <Text style={styles.text}>1 BiebCoin = {this.props.coins.beliebers.price}USD</Text>
+                  <Text style={styles.text}>Total Value: ${Math.round(mapping.beliebers.amount * this.props.coins.beliebers.price * 100) / 100 }</Text>
+                  <Text style={styles.text}>1 BiebCoin = {this.props.coins.beliebers.price} USD</Text>
                 </View>
               </View>
             </Card>
@@ -55,7 +64,8 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: {mapping.guccigang.amount}</Text>
-                  <Text style={styles.text}>1 GucciCoin = {this.props.coins.guccigang.price}USD</Text>
+                  <Text style={styles.text}>Total Value: ${Math.round(mapping.guccigang.amount * this.props.coins.guccigang.price * 100) / 100 }</Text>
+                  <Text style={styles.text}>1 GucciCoin = {this.props.coins.guccigang.price} USD</Text>
                 </View>
               </View>
             </Card>
@@ -70,7 +80,8 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: {mapping.harmonizers.amount}</Text>
-                  <Text style={styles.text}>1 HarmonyCoin = {this.props.coins.harmonizers.price}USD</Text>
+                  <Text style={styles.text}>Total Value: ${Math.round(mapping.harmonizers.amount * this.props.coins.harmonizers.price * 100) / 100 }</Text>
+                  <Text style={styles.text}>1 HarmonyCoin = {this.props.coins.harmonizers.price} USD</Text>
                 </View>
               </View>
             </Card>
@@ -85,7 +96,8 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: {mapping.katycats.amount}</Text>
-                  <Text style={styles.text}>1 KatyCoin = {this.props.coins.katycats.price}USD</Text>
+                  <Text style={styles.text}>Total Value: ${Math.round(mapping.katycats.amount * this.props.coins.katycats.price * 100) / 100 }</Text>
+                  <Text style={styles.text}>1 KatyCoin = {this.props.coins.katycats.price} USD</Text>
                 </View>
               </View>
             </Card>
@@ -100,7 +112,8 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: {mapping.swifties.amount}</Text>
-                  <Text style={styles.text}>1 SwiftCoin = {this.props.coins.swifties.price}USD</Text>
+                  <Text style={styles.text}>Total Value: ${Math.round(mapping.swifties.amount * this.props.coins.swifties.price * 100) / 100 }</Text>
+                  <Text style={styles.text}>1 SwiftCoin = {this.props.coins.swifties.price} USD</Text>
                 </View>
               </View>
             </Card>
@@ -115,7 +128,8 @@ class Wallet extends Component {
                   />
                 <View style={{ marginLeft: 20 }}>
                   <Text style={styles.subHeader}>Balance: {mapping.wutang.amount}</Text>
-                  <Text style={styles.text}>1 WuTangCoin = {this.props.coins.wutang.price}USD</Text>
+                  <Text style={styles.text}>Total Value: ${Math.round(mapping.wutang.amount * this.props.coins.wutang.price * 100) / 100 }</Text>
+                  <Text style={styles.text}>1 WuTangCoin = {this.props.coins.wutang.price} USD</Text>
                 </View>
               </View>
             </Card>
@@ -140,7 +154,7 @@ const styles = StyleSheet.create({
       marginBottom: 20
     },
     subHeader: {
-        marginTop: 20,
+        marginTop: 10,
         marginBottom: 20,
         color: "#ffffff",
         fontSize: 18,
@@ -154,6 +168,7 @@ const styles = StyleSheet.create({
     text: {
         color: "#ffffff",
         fontSize: 14,
+        marginBottom: 5
     },
 });
 
