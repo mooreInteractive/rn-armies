@@ -1,3 +1,4 @@
+import cloneDeep from "lodash/cloneDeep";
 import reducer from "../user";
 import { USER } from "../../constants/types";
 import * as STATES from "../../constants/states";
@@ -47,9 +48,21 @@ describe("User reducer", () => {
     });
 
     describe(USER.ADD_COIN, () => {
+        it("should not change wallet if coin key is invalid", () => {
+            const coin = { key: "trollface", amount: 100000000000 }
+            const action = {
+                type: USER.ADD_COIN,
+                key: coin.key,
+                amount: coin.amount
+            };
+            const expectedState = cloneDeep(state);
+            state = reducer(state, action);
+            expect(state).toEqual(expectedState);
+        });
+
         it("should add coin to user's wallet (when user doesnt own any)", () => {
             // first remove any wutang coin from wallet
-            const coin = { key: 'wutang', amount: 36 };
+            const coin = { key: "wutang", amount: 36 };
             state = {
                 ...state,
                 wallet: {
