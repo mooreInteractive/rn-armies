@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { AlertIOS, ScrollView, View, Image, Text, Button, Picker, TextInput, Modal, KeyboardAvoidingView, TouchableWithoutFeedback, StyleSheet } from "react-native";
+import { addCoinToWallet, subtractCoinFromWallet } from "../actions/user"
 
 class Exchange extends Component {
   constructor(props) {
@@ -31,6 +32,8 @@ class Exchange extends Component {
       mapping[this.props.coins[coin.key].coinName] = coin
     })
 
+    console.log(mapping)
+
     const priceMap = {}
     Object.keys(this.props.coins).forEach(coin => {
       priceMap[this.props.coins[coin].coinName] = {}
@@ -45,7 +48,11 @@ class Exchange extends Component {
 
     const successConfimBtns = [{
         text: "Confirm",
-        onPress: () => {}
+        onPress: () => {
+          this.props.dispatch(addCoinToWallet(mapping[this.state.coinOwned].key, Number.parseFloat(this.state.coinOwnedCount)))
+          this.props.dispatch(subtractCoinFromWallet(mapping[this.state.coinDesired].key, Number.parseFloat(this.state.coinDesiredCount)))
+          this.setState({coinDesiredCount: "0", coinOwnedCount: "0" })
+        }
     },
     {
         text: "Cancel",
