@@ -6,8 +6,8 @@ const _generateValue = (min, max) => {
     return Math.random() * (max - min) + min;
 };
 
-const _generateDollarAmount = (min, max) => {
-    return Math.round(_generateValue(min, max) * 100) / 100; // round to 2 decimals
+const _generateNumberTwoDecimalPlaces = (min, max) => {
+    return Math.round(_generateValue(min, max) * 100) / 100;
 };
 
 const _generateWholeNumber = (min, max) => {
@@ -16,12 +16,12 @@ const _generateWholeNumber = (min, max) => {
 
 const _generateCashAmount = () => {
     const { min, max } = RANGES.cash;
-    return _generateDollarAmount(min, max);
+    return _generateNumberTwoDecimalPlaces(min, max);
 } 
 
 const _generateCoinAmount = () => {
     const { min, max } = RANGES.userCoin;
-    return _generateWholeNumber(min, max);
+    return _generateNumberTwoDecimalPlaces(min, max);
 };
 
 const _generateCoinCollection = () => {
@@ -39,7 +39,7 @@ const _generateCoinCollection = () => {
 // Public
 export const generatePrice = () => {
     const { min, max } = RANGES.price;
-    return _generateDollarAmount(min, max);
+    return _generateNumberTwoDecimalPlaces(min, max);
 };
 
 export const generateSupply = () => {
