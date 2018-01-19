@@ -26,8 +26,17 @@ class Home extends Component {
             </TouchableHighlight>
         );
     }
-    render() {
+    renderNavButton(key, imgSrc) {
         const { navigate } = this.props.navigation;
+        return (
+            <TouchableHighlight
+                onPress={() => navigate(key)}
+            >
+                <Image style={styles.groupImage} source={imgSrc} />
+            </TouchableHighlight>
+        );
+    }
+    render() {
         return (
             <View
                 style={{
@@ -74,14 +83,17 @@ class Home extends Component {
                         require("../../assets/icons/WuTangCoin.jpg")
                     )}
                 </View>
-                <Button
-                    onPress={() => navigate("Exchange")}
-                    title="Go to exchange"
-                />
-                <Button
-                    onPress={() => navigate("Wallet")}
-                    title="Go to wallet"
-                />
+                <Text style={styles.mainTitle}>Exchange / Wallet</Text>
+                <View style={styles.tileContainer}>
+                  {this.renderNavButton(
+                      "Wallet",
+                      require("../../assets/icons/wallet.png")
+                  )}
+                  {this.renderNavButton(
+                      "Exchange",
+                      require("../../assets/icons/exchange.png")
+                  )}
+                </View>
             </View>
         );
     }
@@ -101,8 +113,8 @@ const styles = StyleSheet.create({
         flexWrap: "wrap"
     },
     groupImage: {
-        width: 115,
-        height: 115,
+        width: 70,
+        height: 70,
         margin: 5
     }
 });

@@ -38,44 +38,6 @@ export const coins = [
         ]
     },
     {
-        key: "katycats",
-        plural: "KatyCats",
-        singular: "KatyCat",
-        artist: "Katy Perry",
-        coinImg: "KatyCoin.jpg",
-        coinName: "KatyCoin",
-        symbol: "KC",
-        rewards: [
-            {
-                type: "tweet",
-                title: "@Mention from Katy",
-                desc: "A robot will tweet at you from Katy's legit account.",
-                cost: 1000
-            },
-            {
-                type: "tickets",
-                title: "2 Tickets to See Katy",
-                desc:
-                    "You and a friend will get nosebleed, cant-see-shit seats for free*",
-                cost: 100
-            }
-        ],
-        actions: [
-            {
-                type: "tweet",
-                title: "Retweet #KatyCats",
-                desc: "Send a tweet, get Katy Coin! Spread the word!",
-                gift: 0.1
-            },
-            {
-                type: "facebook",
-                title: "Post about Katy",
-                desc: "Get your friend(s) on facebook to spend money.",
-                gift: 0.2
-            }
-        ]
-    },
-    {
         key: "beyhive",
         plural: "Beyhive",
         singular: "Beyhive",
@@ -132,7 +94,43 @@ export const coins = [
         artist: "Lil Pump",
         coinImg: "GucciCoin.png",
         coinName: "GucciCoin",
-        symbol: "GG"
+        symbol: "GG",
+        rewards: [
+            {
+                type: "tweet",
+                title: "@Mention from Lil Pump",
+                desc: "A robot will tweet at you from Lil Pump's account.",
+                cost: 100
+            },
+            {
+                type: "tickets",
+                title: "2 Tickets to See Gucci Mane",
+                desc:
+                    "You and a friend will get nosebleed, cant-see-shit seats for free*",
+                cost: 10000
+            },
+            {
+                type: "tickets",
+                title: "2 Tickets to See Lil Pump",
+                desc:
+                    "You and a friend will get nosebleed, cant-see-shit seats for free*",
+                cost: 6000
+            }
+        ],
+        actions: [
+            {
+                type: "tweet",
+                title: "Retweet #GucciGang 3 times",
+                desc: "Send a tweet, get GG Coin! Spread the word!",
+                gift: 0.1
+            },
+            {
+                type: "facebook",
+                title: "Post about Lil Pump",
+                desc: "Get your friend(s) on facebook to spend money.",
+                gift: 0.2
+            }
+        ]
     },
     {
         key: "harmonizers",
@@ -179,7 +177,36 @@ export const coins = [
         artist: "Katy Perry",
         coinImg: "KatyCoin.jpg",
         coinName: "KatyCoin",
-        symbol: "KC"
+        symbol: "KC",
+        rewards: [
+            {
+                type: "tweet",
+                title: "@Mention from Katy",
+                desc: "A robot will tweet at you from Katy's legit account.",
+                cost: 1000
+            },
+            {
+                type: "tickets",
+                title: "2 Tickets to See Katy",
+                desc:
+                    "You and a friend will get nosebleed, cant-see-shit seats for free*",
+                cost: 100
+            }
+        ],
+        actions: [
+            {
+                type: "tweet",
+                title: "Retweet #KatyCats",
+                desc: "Send a tweet, get Katy Coin! Spread the word!",
+                gift: 0.1
+            },
+            {
+                type: "facebook",
+                title: "Post about Katy",
+                desc: "Get your friend(s) on facebook to spend money.",
+                gift: 0.2
+            }
+        ]
     },
     {
         key: "swifties",
@@ -214,51 +241,6 @@ export const coins = [
             {
                 type: "facebook",
                 title: "Post about Taylor",
-                desc: "Get your friend(s) on facebook to spend money.",
-                gift: 0.2
-            }
-        ]
-    },
-    {
-        key: "guccigang",
-        plural: "Gucci Gang",
-        singular: "Gucci Gang",
-        artist: "Lil Pump",
-        coinImg: "GucciCoin.png",
-        coinName: "GucciCoin",
-        symbol: "GG",
-        rewards: [
-            {
-                type: "tweet",
-                title: "@Mention from Lil Pump",
-                desc: "A robot will tweet at you from Lil Pump's account.",
-                cost: 100
-            },
-            {
-                type: "tickets",
-                title: "2 Tickets to See Gucci Mane",
-                desc:
-                    "You and a friend will get nosebleed, cant-see-shit seats for free*",
-                cost: 10000
-            },
-            {
-                type: "tickets",
-                title: "2 Tickets to See Lil Pump",
-                desc:
-                    "You and a friend will get nosebleed, cant-see-shit seats for free*",
-                cost: 6000
-            }
-        ],
-        actions: [
-            {
-                type: "tweet",
-                title: "Retweet #GucciGang 3 times",
-                desc: "Send a tweet, get GG Coin! Spread the word!",
-                gift: 0.1
-            },
-            {
-                type: "facebook",
-                title: "Post about Lil Pump",
                 desc: "Get your friend(s) on facebook to spend money.",
                 gift: 0.2
             }
