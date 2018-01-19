@@ -66,14 +66,19 @@ class Exchange extends Component {
             <TextInput
               style={styles.numInput}
               onChangeText={(coinOwnedCount) => {
-                if (!coinOwnedCount) coinOwnedCount = "0"
-                coinOwnedCount = Number.parseFloat(coinOwnedCount)
-                const value = coinOwnedCount * priceMap[this.state.coinOwned].price
-                const desiredCount = Math.round(value / priceMap[this.state.coinDesired].price * 100) / 100
-                this.setState({
-                  coinOwnedCount: String(coinOwnedCount),
-                  coinDesiredCount: String(desiredCount)
-                })
+                if (coinOwnedCount === "") {
+                  this.setState({
+                    coinOwnedCount: ""
+                  })
+                } else {
+                  coinOwnedCount = Number.parseFloat(coinOwnedCount)
+                  const value = coinOwnedCount * priceMap[this.state.coinOwned].price
+                  const desiredCount = Math.round(value / priceMap[this.state.coinDesired].price * 100) / 100
+                  this.setState({
+                    coinOwnedCount: String(coinOwnedCount),
+                    coinDesiredCount: String(desiredCount)
+                  })
+                }
               }}
               value={this.state.coinOwnedCount}
               keyboardType="numeric"
@@ -95,13 +100,19 @@ class Exchange extends Component {
             <TextInput
               style={styles.numInput}
               onChangeText={(coinDesiredCount) => {
-                coinDesiredCount = Number.parseFloat(coinDesiredCount)
-                const value = coinDesiredCount * priceMap[this.state.coinDesired].price
-                const ownedCount = Math.round(value / priceMap[this.state.coinOwned].price * 100) / 100
-                this.setState({
-                  coinOwnedCount: String(ownedCount),
-                  coinDesiredCount: String(coinDesiredCount)
-                })
+                if (coinDesiredCount === "") {
+                  this.setState({
+                    coinDesiredCount: ""
+                  })
+                } else {
+                  coinDesiredCount = Number.parseFloat(coinDesiredCount)
+                  const value = coinDesiredCount * priceMap[this.state.coinDesired].price
+                  const ownedCount = Math.round(value / priceMap[this.state.coinOwned].price * 100) / 100
+                  this.setState({
+                    coinOwnedCount: String(ownedCount),
+                    coinDesiredCount: String(coinDesiredCount)
+                  })
+                }
               }}
               value={this.state.coinDesiredCount}
               keyboardType="numeric"
