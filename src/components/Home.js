@@ -10,6 +10,25 @@ import {
 } from "react-native";
 
 class Home extends Component {
+    static navigationOptions = ({ navigation }) => {
+      return {
+        headerRight: (
+          <View style={{ flex: 1, flexDirection: "row"}}>
+          <TouchableHighlight
+              onPress={() => navigation.navigate("Exchange")}
+          >
+            <Image style={styles.headerImage} source={require("../../assets/icons/exchange.png")} />
+          </TouchableHighlight>
+          <TouchableHighlight
+              onPress={() => navigation.navigate("Wallet")}
+          >
+            <Image style={styles.headerImage} source={require("../../assets/icons/wallet.png")} />
+          </TouchableHighlight>
+          </View>
+        )
+      }
+    }
+
     navToGroupPage(coin, label) {
         const { navigate } = this.props.navigation;
         navigate("GroupPage", {
@@ -29,11 +48,9 @@ class Home extends Component {
     renderNavButton(key, imgSrc) {
         const { navigate } = this.props.navigation;
         return (
-            <TouchableHighlight
-                onPress={() => navigate(key)}
-            >
+
                 <Image style={styles.groupImage} source={imgSrc} />
-            </TouchableHighlight>
+
         );
     }
     render() {
@@ -83,17 +100,6 @@ class Home extends Component {
                         require("../../assets/icons/WuTangCoin.jpg")
                     )}
                 </View>
-                <Text style={styles.mainTitle}>Exchange / Wallet</Text>
-                <View style={styles.tileContainer}>
-                  {this.renderNavButton(
-                      "Wallet",
-                      require("../../assets/icons/wallet.png")
-                  )}
-                  {this.renderNavButton(
-                      "Exchange",
-                      require("../../assets/icons/exchange.png")
-                  )}
-                </View>
             </View>
         );
     }
@@ -113,8 +119,13 @@ const styles = StyleSheet.create({
         flexWrap: "wrap"
     },
     groupImage: {
-        width: 70,
-        height: 70,
+        width: 115,
+        height: 115,
+        margin: 5
+    },
+    headerImage: {
+        width: 30,
+        height: 30,
         margin: 5
     }
 });
