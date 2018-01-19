@@ -1,4 +1,4 @@
-import { USER } from "../constants/types";
+import { USER } from "../constants/actionTypes";
 
 // Action creators
 export const addCoinToWallet = (key, amount) => ({

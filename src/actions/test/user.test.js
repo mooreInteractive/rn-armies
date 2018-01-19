@@ -1,5 +1,5 @@
 import * as actions from "../user.js";
-import { USER } from "../../constants/types";
+import { USER } from "../../constants/actionTypes";
 
 describe("user actions", () => {
     describe("addCoinToWallet", () => {

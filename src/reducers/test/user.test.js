@@ -1,6 +1,6 @@
 import cloneDeep from "lodash/cloneDeep";
 import reducer from "../user";
-import { USER } from "../../constants/types";
+import { USER } from "../../constants/actionTypes";
 import * as STATES from "../../constants/states";
 import init from "../../helpers/initStates";
 
