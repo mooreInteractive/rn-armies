@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, Dimensions, Button } from "react-native";
 import ProgressBar from "./progressBar";
+import * as actions from "../../actions/user";
 
 export default class Miner extends Component {
     constructor(props) {
@@ -12,7 +13,6 @@ export default class Miner extends Component {
             currentCoinProgress: 0,
             buttonState: "start",
             buttonHandler: this.startMiner,
-            currentBalance: this.props.currentBalance,
             buttonColor: "#3434DE"
         };
     }
@@ -25,8 +25,7 @@ export default class Miner extends Component {
         this.setState({ currentCoinProgress: nextProgress });
     }
     addCoin() {
-        let newBalance = this.state.currentBalance + 0.01;
-        this.setState({ currentBalance: newBalance });
+        this.props.dispatch(actions.addCoinToWallet(this.props.coinKey, 0.01));
     }
     startMiner() {
         this.mineTimer = setInterval(this.incrementMiner, 100);
@@ -57,7 +56,7 @@ export default class Miner extends Component {
                 <View style={styles.balContainer}>
                     <Text style={styles.balLabel}>Bal:</Text>
                     <Text style={styles.balValue}>
-                        {`${this.state.currentBalance.toFixed(2)} ${
+                        {`${this.props.currentBalance.toFixed(2)} ${
                             this.props.symbol
                         }`}
                     </Text>

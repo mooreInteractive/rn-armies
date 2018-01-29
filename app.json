@@ -1,5 +1,15 @@
 {
-  "expo": {
-    "sdkVersion": "23.0.0"
-  }
+    "expo": {
+        "name": "CryptoFan",
+        "icon": "./assets/team_armies_icon.png",
+        "version": "1.0.1",
+        "slug": "vevo-cryptofan",
+        "sdkVersion": "23.0.0",
+        "ios": {
+            "bundleIdentifier": "com.vevo.cryptofan"
+        },
+        "android": {
+            "package": "com.vevo.cryptofan"
+        }
+    }
 }

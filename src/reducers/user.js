@@ -1,4 +1,7 @@
-import { addCoinToCollection, subtractCoinFromCollection } from "../helpers/coins";
+import {
+    addCoinToCollection,
+    subtractCoinFromCollection
+} from "../helpers/coins";
 import init from "../helpers/initStates";
 import * as STATES from "../constants/states";
 import { USER } from "../constants/actionTypes";
@@ -48,6 +51,6 @@ const user = (state = init(STATES.user), action) => {
         default:
             return state;
     }
-}
+};
 
 export default user;

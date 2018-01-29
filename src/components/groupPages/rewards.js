@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { tabStyles } from "./groupTabsStyles.js";
 import Card from "../cards/card";
+import * as actions from "../../actions/user";
 
 class GroupRewards extends Component {
     constructor(props) {
@@ -18,9 +19,6 @@ class GroupRewards extends Component {
         this.coinName = props.navigation.state.params.label;
         this.coinKey = props.navigation.state.params.coin;
         this.coinObj = this.props.coins[this.coinKey];
-        this.coinWallet = this.props.user.wallet.coins.filter(
-            coin => coin.key === this.coinKey
-        );
     }
 
     static navigationOptions = {
@@ -37,7 +35,10 @@ class GroupRewards extends Component {
 
     getReward(reward) {
         console.log("getReward", reward);
-        let userCoins = this.coinWallet.length ? this.coinWallet[0].amount : 0;
+        let coinWallet = this.props.user.wallet.coins.filter(
+            coin => coin.key === this.coinKey
+        );
+        let userCoins = coinWallet.length ? coinWallet[0].amount : 0;
         let cost = reward.cost;
         let requirementsMet = userCoins >= cost;
         if (requirementsMet) {
@@ -59,6 +60,9 @@ class GroupRewards extends Component {
                     onPress: () => {
                         //Add buyAmt to user Coin Wallet
                         //Remove cost from user USD Wallet
+                        this.props.dispatch(
+                            actions.subtractCoinFromWallet(this.coinKey, cost)
+                        );
                         console.log("add reward", reward);
                         console.log("remove coin", cost);
                     }
@@ -69,7 +73,9 @@ class GroupRewards extends Component {
             //not enough cash bro
             //good to go
             let title = "You Can't Afford It";
-            let message = `You only have ${userCoins}, but you need ${cost} to redeem this reward.`;
+            let message = `You only have ${userCoins.toFixed(
+                2
+            )}, but you need ${cost} to redeem this reward.`;
             let callback = () => {
                 console.log("no reward.");
             };
@@ -115,7 +121,10 @@ class GroupRewards extends Component {
     }
 
     render() {
-        let bal = this.coinWallet.length ? this.coinWallet[0].amount : 0;
+        let coinWallet = this.props.user.wallet.coins.filter(
+            coin => coin.key === this.coinKey
+        );
+        let bal = coinWallet.length ? coinWallet[0].amount : 0;
         return (
             <ScrollView
                 style={styles.container}
@@ -129,7 +138,7 @@ class GroupRewards extends Component {
                         style={{ flexDirection: "row", alignItems: "center" }}
                     >
                         <Text style={styles.topBal}>{`Bal: `}</Text>
-                        <Text style={styles.topBalValue}>{`${bal} ${
+                        <Text style={styles.topBalValue}>{`${bal.toFixed(2)} ${
                             this.coinObj.symbol
                         }`}</Text>
                     </View>

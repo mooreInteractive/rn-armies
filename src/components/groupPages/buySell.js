@@ -13,6 +13,7 @@ import {
 import { tabStyles } from "./groupTabsStyles.js";
 import Card from "../cards/card";
 import CoinMovement from "../coinMovement";
+import * as actions from "../../actions/user";
 
 class GroupBuySell extends Component {
     constructor(props) {
@@ -44,7 +45,9 @@ class GroupBuySell extends Component {
     buyCoin() {
         console.log("Buying", this.state.buyAmt);
         let userWallet = this.props.user.wallet.dollars;
-        let cost = (this.state.buyAmt * this.coinObj.price).toFixed(2);
+        let cost = (
+            this.state.buyAmt * this.props.coins[this.coinKey].price
+        ).toFixed(2);
         let requirementsMet = userWallet >= cost;
         if (requirementsMet) {
             //good to go
@@ -67,6 +70,15 @@ class GroupBuySell extends Component {
                         //Remove cost from user USD Wallet
                         console.log("add coin", this.state.buyAmt);
                         console.log("remove $", cost);
+                        this.props.dispatch(
+                            actions.addCoinToWallet(
+                                this.coinKey,
+                                parseFloat(this.state.buyAmt)
+                            )
+                        );
+                        this.props.dispatch(
+                            actions.subtractCashFromWallet(parseFloat(cost))
+                        );
                     }
                 }
             ];
@@ -75,9 +87,9 @@ class GroupBuySell extends Component {
             //not enough cash bro
             //good to go
             let title = "You Can't Afford It";
-            let message = `You only have ${
-                this.props.user.wallet.dollars
-            }, but you need ${cost} to make this purchase.`;
+            let message = `You only have ${this.props.user.wallet.dollars.toFixed(
+                2
+            )}, but you need ${cost} to make this purchase.`;
             let callback = () => {
                 this.setState({ buyAmt: 0 });
             };
@@ -93,7 +105,9 @@ class GroupBuySell extends Component {
         let userWallet = currentCoinWallet.length
             ? currentCoinWallet[0].amount
             : 0;
-        let cost = (this.state.sellAmt * this.coinObj.price).toFixed(2);
+        let cost = (
+            this.state.sellAmt * this.props.coins[this.coinKey].price
+        ).toFixed(2);
         let requirementsMet = this.state.sellAmt <= userWallet;
         if (requirementsMet) {
             //good to go
@@ -116,6 +130,15 @@ class GroupBuySell extends Component {
                         //Remove cost from user USD Wallet
                         console.log("add $", cost);
                         console.log("remove coin", this.state.sellAmt);
+                        this.props.dispatch(
+                            actions.addCashToWallet(parseFloat(cost))
+                        );
+                        this.props.dispatch(
+                            actions.subtractCoinFromWallet(
+                                this.coinKey,
+                                parseFloat(this.state.sellAmt)
+                            )
+                        );
                     }
                 }
             ];
@@ -124,7 +147,7 @@ class GroupBuySell extends Component {
             //not enough cash bro
             //good to go
             let title = "You Can't Afford It";
-            let message = `You only have ${userWallet} ${
+            let message = `You only have ${userWallet.toFixed(2)} ${
                 this.coinObj.symbol
             }, but you're trying to sell ${this.state.sellAmt} ${
                 this.coinObj.symbol
@@ -145,7 +168,7 @@ class GroupBuySell extends Component {
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Text style={styles.topBal}>{`Price: `}</Text>
                     <Text style={styles.topBalValue}>{`${
-                        this.coinObj.price
+                        this.props.coins[this.coinKey].price
                     } USD`}</Text>
                 </View>
             </View>
@@ -160,7 +183,7 @@ class GroupBuySell extends Component {
             this.buyCoin();
         };
         let topLabel = `USD Wallet: `;
-        let topValue = `$${this.props.user.wallet.dollars}`;
+        let topValue = `$${this.props.user.wallet.dollars.toFixed(2)}`;
         let buttonColor = "#34DE34";
         //Change settings if Sell Card
         if (type === "Sell") {
@@ -174,10 +197,10 @@ class GroupBuySell extends Component {
                 this.sellCoin();
             };
             topLabel = `${this.coinObj.symbol} Wallet: `;
-            topValue = `${ownedCoin} ${this.coinObj.symbol}`;
+            topValue = `${ownedCoin.toFixed(2)} ${this.coinObj.symbol}`;
             buttonColor = "#9999DE";
         }
-        let buyTotal = this.coinObj.price * value;
+        let buyTotal = this.props.coins[this.coinKey].price * value;
         return (
             <Card>
                 <View style={styles.cardTop}>
@@ -194,7 +217,7 @@ class GroupBuySell extends Component {
                 <View style={styles.volumeContainer}>
                     <Text style={styles.volume}>Volume:</Text>
                     <Text style={styles.volumeVal}>{`${
-                        this.coinObj.supply
+                        this.props.coins[this.coinKey].supply
                     }`}</Text>
                 </View>
                 <View style={[styles.right]}>

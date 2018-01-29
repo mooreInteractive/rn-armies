@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { StyleSheet, ScrollView, View, Text, Button } from "react-native";
 import Card from "../cards/card";
 import Miner from "../miner/miner";
+import * as actions from "../../actions/user";
 
 class GroupMain extends Component {
     constructor(props) {
@@ -10,9 +11,6 @@ class GroupMain extends Component {
         this.coinName = props.navigation.state.params.label;
         this.coinKey = props.navigation.state.params.coin;
         this.coinObj = this.props.coins[this.coinKey];
-        this.coinWallet = this.props.user.wallet.coins.filter(
-            coin => coin.key === this.coinKey
-        );
     }
 
     static navigationOptions = ({ navigation }) => ({
@@ -26,15 +24,15 @@ class GroupMain extends Component {
     });
 
     redeemAction(gift) {
-        console.log("redeem:", gift);
+        this.props.dispatch(actions.addCoinToWallet(this.coinKey, gift.gift));
     }
 
     renderActions() {
-        let actions = [];
+        let actionItems = [];
         this.coinObj.actions.forEach((action, index) => {
             let typeColor = action.type === "tweet" ? "#1DA1F2" : "#3B5998";
             let typeStyle = { color: typeColor };
-            actions.push(
+            actionItems.push(
                 <Card key={`${index}-${action.type}`}>
                     <View style={styles.rewardTop}>
                         <Text style={styles.rewardTitle}>{action.title}</Text>
@@ -63,11 +61,14 @@ class GroupMain extends Component {
                 </Card>
             );
         });
-        return actions;
+        return actionItems;
     }
 
     render() {
-        let currentBal = this.coinWallet.length ? this.coinWallet[0].amount : 0;
+        let coinWallet = this.props.user.wallet.coins.filter(
+            coin => coin.key === this.coinKey
+        );
+        let currentBal = coinWallet.length ? coinWallet[0].amount : 0;
         return (
             <ScrollView
                 style={styles.container}
@@ -82,15 +83,17 @@ class GroupMain extends Component {
                     >
                         <Text style={styles.topBal}>{`Price: `}</Text>
                         <Text style={styles.topBalValue}>{`${
-                            this.coinObj.price
+                            this.props.coins[this.coinKey].price
                         } USD`}</Text>
                     </View>
                 </View>
                 <Card type={"miner"}>
                     <Text style={styles.minerTitle}>Miner</Text>
                     <Miner
+                        dispatch={this.props.dispatch}
                         currentBalance={currentBal}
                         symbol={this.coinObj.symbol}
+                        coinKey={this.coinObj.key}
                     />
                 </Card>
                 {this.renderActions()}

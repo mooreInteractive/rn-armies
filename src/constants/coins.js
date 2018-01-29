@@ -33,7 +33,7 @@ export const coins = [
                 type: "facebook",
                 title: "Post about Justin",
                 desc: "Get your friend(s) on facebook to spend money.",
-                gift: 0.2
+                gift: 0.03
             }
         ]
     },
